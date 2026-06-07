@@ -27,7 +27,42 @@
 <!-- End Meta Pixel -->
 <style>
   :root{--green:#703b83;--green-dark:#5a2f6a;--blue:#2EA3F2;--text:#404040;--heading:#222222;--bg:#FAFAFA;--bg-tint:#F7FAF9;--white:#ffffff;--shadow:0 10px 30px rgba(0,0,0,.08);--radius:14px}
-lay:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}@media(max-width:760px){html{scroll-padding-top:0}}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);line-height:1.8;font-size:16px;background:var(--white);-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{color:var(--heading);line-height:1.25;font-weight:700}
+  h1{font-size:clamp(1.9rem,5vw,3rem)}h2{font-size:clamp(1.5rem,3.5vw,2.2rem)}h3{font-size:1.15rem}
+  p{margin-bottom:1rem}a{color:var(--blue);text-decoration:none}img{max-width:100%;display:block}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 20px}.section{padding:72px 0}.section.tint{background:var(--bg-tint)}.section.grey{background:var(--bg)}.center{text-align:center}
+  .eyebrow{display:inline-block;background:rgba(112,59,131,.15);color:var(--green-dark);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.8rem;padding:7px 16px;border-radius:50px;margin-bottom:18px}
+  .lead{font-size:1.12rem}.lead-mobile{display:none}.accent{color:var(--green-dark)}
+  .top-bar{background:var(--heading);color:#fff;text-align:center;padding:11px 20px;font-weight:800;font-size:1rem;letter-spacing:.01em;line-height:1.4}
+  @media(max-width:760px){.top-bar{font-size:.8rem;padding:9px 14px}}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff !important;font-weight:700;text-transform:uppercase;letter-spacing:.02em;padding:16px 30px;border-radius:8px;border:none;cursor:pointer;font-size:1rem;box-shadow:0 8px 20px rgba(112,59,131,.4);transition:transform .15s ease,box-shadow .15s ease}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(112,59,131,.5)}.btn.big{padding:20px 42px;font-size:1.1rem}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}.btn-row.center{justify-content:center}
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #eee}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}.logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--heading);font-size:1.05rem}.logo img{height:38px}
+  .nav-cta{display:flex;align-items:center;gap:16px}.nav .btn{padding:11px 20px;font-size:.85rem;box-shadow:none}
+  @media(max-width:760px){header{display:none}}
+  .hero{position:relative;background:linear-gradient(180deg,#fff 0%,var(--bg-tint) 100%);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:64px 20px}
+  .hero h1 span{color:var(--green-dark)}.hero ul{list-style:none;margin:22px 0 28px}
+  .hero li{padding-left:34px;position:relative;margin-bottom:10px;font-weight:600;color:var(--heading)}
+  .hero li::before{content:"✓";position:absolute;left:0;top:0;width:24px;height:24px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
+  .hero-img{position:relative}.hero-img img{border-radius:var(--radius);box-shadow:var(--shadow);width:100%;object-fit:cover;aspect-ratio:4/3}
+  .badge-float{position:absolute;bottom:-18px;left:-18px;background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:14px 18px;display:flex;align-items:center;gap:10px;font-weight:700;color:var(--heading);font-size:.95rem}
+  .badge-float .dot{width:12px;height:12px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(112,59,131,.25)}
+  .badge-float.loc{bottom:auto;top:-18px;left:-18px;right:auto;color:var(--green-dark)}
+  .urgency{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;max-width:100%;background:linear-gradient(180deg,#fff8e8,#fff0cc);border:1px solid #ffd980;color:#a86b00;font-weight:600;padding:9px 18px;border-radius:50px;font-size:.85rem;margin-bottom:18px;box-shadow:0 4px 12px rgba(255,180,0,.18)}
+  .urgency strong{font-weight:800;color:#8a5600}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:30px;padding:40px 20px}.badge-float{left:10px}}
+  .trust{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap;padding:30px 20px;border-top:1px solid #eee;border-bottom:1px solid #eee;background:#fff}
+  .trust img{height:110px;width:auto;filter:none;opacity:.95}
+  .trust-extra{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(112,59,131,.08);border:2px solid var(--green);border-radius:var(--radius);padding:18px 22px;min-width:155px;text-align:center;height:110px}
+  .trust-extra .te-ic{font-size:1.6rem;color:var(--green-dark);line-height:1;margin-bottom:6px}.trust-extra .te-text{font-weight:700;color:var(--heading);font-size:.82rem;line-height:1.35}
+  @media(max-width:760px){.trust img{height:80px}.trust-extra{height:80px;min-width:130px;padding:12px 14px}.trust-extra .te-text{font-size:.75rem}.trust{gap:14px;padding:18px 14px}}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
   .pcard{background:#fff;border:2px solid #eee;border-radius:var(--radius);padding:30px 22px;text-align:center;transition:border-color .2s,transform .2s}
   .pcard:hover{transform:translateY(-4px)}.pcard img{height:96px;margin:0 auto 16px;width:auto}
   .pcard .name{font-weight:800;color:var(--heading);font-size:1.35rem;line-height:1.1}.pcard .age{color:var(--text);font-size:.95rem;margin:6px 0 16px}
@@ -72,7 +107,7 @@ lay:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
   .slot .time{font-size:1.6rem;font-weight:800;color:var(--green)}.slot .age{color:#ddd;margin:4px 0 10px}
   .slot .free{display:inline-block;background:var(--green);color:#fff;font-weight:700;font-size:.8rem;padding:5px 14px;border-radius:50px}.slot .free.few{background:#e74c3c}
   .form-box{background:#fff;border-radius:var(--radius);padding:10px;box-shadow:var(--shadow);margin-top:8px}
-  .form-box iframe{width:100%;min-height:120px;height:120px;border:0;border-radius:10px;display:block;transition:height .25s ease}
+  .form-box iframe{width:100%;min-height:120px;height:120px;border:0;border-radius:10px;display:block;transition:height .25s ease;overflow:hidden}
   @media(max-width:760px){.slots{grid-template-columns:1fr}}
   .faq{max-width:780px;margin:30px auto 0}details{background:#fff;border:1px solid #eee;border-radius:12px;margin-bottom:12px;overflow:hidden}
   details[open]{box-shadow:var(--shadow)}summary{cursor:pointer;padding:18px 22px;font-weight:700;color:var(--heading);list-style:none;display:flex;justify-content:space-between;align-items:center}
@@ -308,7 +343,7 @@ lay:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
       <div class="reviews-meta">
         <div class="ausgezeichnet">Ausgezeichnet</div>
         <div class="r-stars-big">★★★★★</div>
-        <div class="score-line">4,9 von 5 · <strong>Google Bewertungen</strong></div>
+        <div class="score-line">5,0 von 5 · <strong>Google Bewertungen</strong></div>
       </div>
     </div>
     <div class="reviews-scroll">
@@ -348,7 +383,7 @@ lay:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
     <div style="max-width:760px;margin:0 auto" class="reveal">
       <p class="center" style="color:#ddd;margin-bottom:6px;font-weight:700">⇩ ⇨ Probetraining reservieren ⇦ ⇩</p>
       <div class="form-box">
-        <iframe src="https://ext.matool.de/ptformdyn/?hash=1d560e59f1dea425" title="Voranmeldung Probetraining Power Dragons" loading="lazy"></iframe>
+        <iframe src="https://ext.matool.de/ptformdyn/?hash=1d560e59f1dea425" title="Voranmeldung Probetraining Power Dragons" loading="lazy" scrolling="no"></iframe>
       </div>
       <p style="color:#888;font-size:.8rem;text-align:center;margin-top:8px"><a href="https://www.matool.de" target="_blank" rel="noopener" style="color:#777">made by MATOOL</a></p>
     </div>
