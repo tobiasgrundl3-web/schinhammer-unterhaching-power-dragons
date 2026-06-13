@@ -107,7 +107,7 @@
   .slot .time{font-size:1.6rem;font-weight:800;color:var(--green)}.slot .age{color:#ddd;margin:4px 0 10px}
   .slot .free{display:inline-block;background:var(--green);color:#fff;font-weight:700;font-size:.8rem;padding:5px 14px;border-radius:50px}.slot .free.few{background:#e74c3c}
   .form-box{background:#fff;border-radius:var(--radius);padding:10px;box-shadow:var(--shadow);margin-top:8px}
-  .form-box iframe{width:100%;min-height:1200px;height:1200px;border:0;border-radius:10px;display:block;transition:height .25s ease}
+  .form-box iframe{width:100%;min-height:400px;border:0;border-radius:10px;display:block;transition:height .25s ease}
   @media(max-width:760px){.slots{grid-template-columns:1fr}}
   .faq{max-width:780px;margin:30px auto 0}details{background:#fff;border:1px solid #eee;border-radius:12px;margin-bottom:12px;overflow:hidden}
   details[open]{box-shadow:var(--shadow)}summary{cursor:pointer;padding:18px 22px;font-weight:700;color:var(--heading);list-style:none;display:flex;justify-content:space-between;align-items:center}
@@ -383,7 +383,7 @@
     <div style="max-width:760px;margin:0 auto" class="reveal">
       <h3 style="color:#fff;text-align:center;font-size:1.4rem;margin-bottom:14px;font-weight:800;letter-spacing:.01em">🎯 Jetzt Platz sichern</h3>
       <div class="form-box">
-        <iframe src="https://ext.matool.de/ptformdyn/?hash=1d560e59f1dea425" title="Voranmeldung Probetraining Power Dragons" loading="lazy" scrolling="no"></iframe>
+        <iframe src="https://ext.matool.de/ptformdyn/?hash=1bd8052bb9a22fbd" id="probeForm" title="Voranmeldung Probetraining Power Dragons" scrolling="no" frameborder="0" style="width:100%;border:0;border-radius:10px;display:block;"></iframe>
       </div>
       <p style="color:#888;font-size:.8rem;text-align:center;margin-top:8px"><a href="https://www.matool.de" target="_blank" rel="noopener" style="color:#777">made by MATOOL</a></p>
     </div>
@@ -495,12 +495,7 @@
     }
   });
   var bar=document.querySelector('.mobile-cta');if(bar){var anm=document.getElementById('anmeldung');var onScroll=function(){var show=window.scrollY>480;if(anm){var r=anm.getBoundingClientRect();if(r.top<window.innerHeight)show=false;}bar.classList.toggle('show',show);};window.addEventListener('scroll',onScroll,{passive:true});onScroll();}
-  (function(){
-    var mif = document.querySelector('.form-box iframe');
-    if(!mif) return;
-    window.addEventListener('message', function(e){ if(!e.data) return; var d=e.data,h=0; if(typeof d==='string'&&d.indexOf('iFrameSizer')!==-1){ var m=d.match(/Height:(\d+)/i); if(m) h=+m[1]; } if(!h&&typeof d==='object'&&d!==null){ h=+(d.height||d.frameHeight||d.iframeHeight||d.scrollHeight||0); } if(!h&&typeof d==='string'){ try{ var p=JSON.parse(d); h=+(p.height||p.frameHeight||0); }catch(err){} } if(h>80){ mif.style.height=(h+10)+'px'; } });
-    mif.addEventListener('load',function(){ try{ var doc=mif.contentDocument||mif.contentWindow.document; var bh=doc.documentElement.scrollHeight||doc.body.scrollHeight; if(bh>80) mif.style.height=(bh+10)+'px'; }catch(ignore){} });
-  })();
+  (function(){var n=25;var h=10;var k=0;var d=document.getElementById('probeForm');if(!d)return;var f;var b=window.addEventListener?'addEventListener':'attachEvent';var c=window[b];var o=b=='attachEvent'?'onmessage':'message';c(o,function(e){if(e.data===parseInt(e.data)){if(e.data==99999999){var g=function(m,l){var s=document.scrollingElement||document.documentElement,q=s.scrollTop,p=m-q,r=+new Date(),a=function(v,u,x,w){v/=w/2;if(v<1){return x/2*v*v+u}v--;return -x/2*(v*(v-2)-1)+u},i=function(){var v=+new Date();var t=v-r;s.scrollTop=parseInt(a(t,q,p,l));if(t<l){requestAnimationFrame(i)}else{s.scrollTop=m}};i()};g(d.getBoundingClientRect().top+document.documentElement.scrollTop-(Math.max(document.documentElement.clientHeight,window.innerHeight||0)/2),500)}else{f=e.data}}},false);var j=window.setInterval(function(){var a=d.offsetHeight;k=Math.round((f-a)/h);k=Math.abs(k);if(k<1){k=0}if(f>0&&f!=a){if((f-a)>0){d.height=(a+k)+'px'}else{d.height=(a-k)+'px'}}},n)})();
   var scroll = document.querySelector('.reviews-scroll');
   if(scroll){ var isDown=false,startX,scrollLeft; scroll.addEventListener('mousedown',function(e){ isDown=true; startX=e.pageX-scroll.offsetLeft; scrollLeft=scroll.scrollLeft; }); scroll.addEventListener('mouseleave',function(){ isDown=false; }); scroll.addEventListener('mouseup',function(){ isDown=false; }); scroll.addEventListener('mousemove',function(e){ if(!isDown) return; e.preventDefault(); var x=e.pageX-scroll.offsetLeft; scroll.scrollLeft=scrollLeft-(x-startX); }); }
 </script>
