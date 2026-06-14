@@ -87,7 +87,7 @@
   .lk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
   .lk-card{background:#fff;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);border-top:4px solid var(--green)}
   .lk-card .lk-ic{font-size:1.5rem;margin-bottom:8px}.lk-card h4{font-size:1rem;margin-bottom:4px;color:var(--heading)}.lk-card p{margin:0;font-size:.88rem;color:var(--text);line-height:1.5}
-  @media(max-width:820px){.lk-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.lk-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:820px){.lk-grid{grid-template-columns:repeat(2,1fr);gap:10px}.lk-card{padding:14px}.lk-card h4{font-size:.9rem}.lk-card p{font-size:.8rem}}@media(max-width:520px){.lk-grid{grid-template-columns:repeat(2,1fr);gap:8px}.lk-card{padding:12px}.lk-card h4{font-size:.85rem}.lk-card p{font-size:.78rem}}
   .reviews-header{display:flex;align-items:center;gap:18px;justify-content:center;margin-bottom:30px;flex-wrap:wrap}
   .g-logo{width:52px;height:52px;flex-shrink:0}.reviews-meta .ausgezeichnet{font-weight:800;font-size:1.35rem;color:var(--heading);text-align:left}
   .reviews-meta .r-stars-big{color:#fbbc04;font-size:1.35rem;letter-spacing:2px;line-height:1.2}.reviews-meta .score-line{font-size:.9rem;color:#666;margin-top:3px;text-align:left}
@@ -211,7 +211,7 @@
         <img src="logo-tigers.jpg" alt="Power Tigers Logo" width="96" height="96" loading="lazy">
         <div class="name">Power Tigers</div>
         <div class="age">für Grundschüler<br>von 6 bis 10 Jahren</div>
-        <a href="https://www.kinder-kampfsport-schinhammer.de/kinder-karate-6-10/" class="accent" style="font-weight:700">Mehr erfahren →</a>
+        <a href="https://probetraining.kinder-kampfsport-schinhammer.de/" class="accent" style="font-weight:700">Mehr erfahren →</a>
       </div>
       <div class="pcard">
         <img src="logo-panthers.jpg" alt="Power Panthers Logo" width="96" height="96" loading="lazy">
@@ -376,7 +376,7 @@
       <div class="slot">
         <div class="time">16:15 Uhr</div>
         <div class="age">6 – 10 Jahre</div>
-        <img src="logo-tigers.jpg" alt="Power Tigers" style="height:48px;margin:8px auto;width:auto" loading="lazy">
+        <a href="https://probetraining.kinder-kampfsport-schinhammer.de/"><img src="logo-tigers.jpg" alt="Power Tigers" style="height:48px;margin:8px auto;width:auto" loading="lazy"></a>
         <span class="free" id="plaetze-tigers-slot">freie Plätze</span>
       </div>
     </div>
@@ -450,7 +450,7 @@
       </div>
       <div>
         <h5>Programme</h5>
-        <p><a href="#anmeldung">Power Dragons (3,5–5 J.)</a><br><a href="https://www.kinder-kampfsport-schinhammer.de/kinder-karate-6-10/">Power Tigers (6–10 J.)</a><br><a href="https://www.kinder-kampfsport-schinhammer.de/">Power Panthers (11–15 J.)</a></p>
+        <p><a href="#anmeldung">Power Dragons (3,5–5 J.)</a><br><a href="https://probetraining.kinder-kampfsport-schinhammer.de/">Power Tigers (6–10 J.)</a><br><a href="https://www.kinder-kampfsport-schinhammer.de/">Power Panthers (11–15 J.)</a></p>
       </div>
       <div>
         <h5>Rechtliches</h5>
@@ -495,7 +495,7 @@
     }
   });
   var bar=document.querySelector('.mobile-cta');if(bar){var anm=document.getElementById('anmeldung');var onScroll=function(){var show=window.scrollY>480;if(anm){var r=anm.getBoundingClientRect();if(r.top<window.innerHeight)show=false;}bar.classList.toggle('show',show);};window.addEventListener('scroll',onScroll,{passive:true});onScroll();}
-  (function(){var n=25;var h=10;var k=0;var d=document.getElementById('probeForm');if(!d)return;var f;var b=window.addEventListener?'addEventListener':'attachEvent';var c=window[b];var o=b=='attachEvent'?'onmessage':'message';c(o,function(e){if(e.data===parseInt(e.data)){if(e.data==99999999){var g=function(m,l){var s=document.scrollingElement||document.documentElement,q=s.scrollTop,p=m-q,r=+new Date(),a=function(v,u,x,w){v/=w/2;if(v<1){return x/2*v*v+u}v--;return -x/2*(v*(v-2)-1)+u},i=function(){var v=+new Date();var t=v-r;s.scrollTop=parseInt(a(t,q,p,l));if(t<l){requestAnimationFrame(i)}else{s.scrollTop=m}};i()};g(d.getBoundingClientRect().top+document.documentElement.scrollTop-(Math.max(document.documentElement.clientHeight,window.innerHeight||0)/2),500)}else{f=e.data}}},false);var j=window.setInterval(function(){var a=d.offsetHeight;k=Math.round((f-a)/h);k=Math.abs(k);if(k<1){k=0}if(f>0&&f!=a){if((f-a)>0){d.height=(a+k)+'px'}else{d.height=(a-k)+'px'}}},n)})();
+  (function(){var n=25;var h=10;var k=0;var d=document.getElementById('probeForm');if(!d)return;var f;var b=window.addEventListener?'addEventListener':'attachEvent';var c=window[b];var o=b=='attachEvent'?'onmessage':'message';c(o,function(e){if(e.data===parseInt(e.data)){if(e.data==99999999){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:"formular_abgesendet"});if(typeof fbq!=="undefined"){fbq("track","Lead");}console.log("MA Tool GoTr(): formular_abgesendet → dataLayer");var g=function(m,l){var s=document.scrollingElement||document.documentElement,q=s.scrollTop,p=m-q,r=+new Date(),a=function(v,u,x,w){v/=w/2;if(v<1){return x/2*v*v+u}v--;return -x/2*(v*(v-2)-1)+u},i=function(){var v=+new Date();var t=v-r;s.scrollTop=parseInt(a(t,q,p,l));if(t<l){requestAnimationFrame(i)}else{s.scrollTop=m}};i()};g(d.getBoundingClientRect().top+document.documentElement.scrollTop-(Math.max(document.documentElement.clientHeight,window.innerHeight||0)/2),500)}else{f=e.data}}},false);var j=window.setInterval(function(){var a=d.offsetHeight;k=Math.round((f-a)/h);k=Math.abs(k);if(k<1){k=0}if(f>0&&f!=a){if((f-a)>0){d.height=(a+k)+'px'}else{d.height=(a-k)+'px'}}},n)})();
   var scroll = document.querySelector('.reviews-scroll');
   if(scroll){ var isDown=false,startX,scrollLeft; scroll.addEventListener('mousedown',function(e){ isDown=true; startX=e.pageX-scroll.offsetLeft; scrollLeft=scroll.scrollLeft; }); scroll.addEventListener('mouseleave',function(){ isDown=false; }); scroll.addEventListener('mouseup',function(){ isDown=false; }); scroll.addEventListener('mousemove',function(e){ if(!isDown) return; e.preventDefault(); var x=e.pageX-scroll.offsetLeft; scroll.scrollLeft=scrollLeft-(x-startX); }); }
 </script>
