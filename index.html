@@ -28,7 +28,7 @@
 <style>
   :root{--green:#703b83;--green-dark:#5a2f6a;--blue:#2EA3F2;--text:#404040;--heading:#222222;--bg:#FAFAFA;--bg-tint:#F7FAF9;--white:#ffffff;--shadow:0 10px 30px rgba(0,0,0,.08);--radius:14px}
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:84px}@media(max-width:760px){html{scroll-padding-top:0}}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}@media(max-width:760px){html{scroll-padding-top:60px}}
   html,body{overflow-x:hidden}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);line-height:1.8;font-size:16px;background:var(--white);-webkit-font-smoothing:antialiased}
   h1,h2,h3,h4{color:var(--heading);line-height:1.25;font-weight:700}
   h1{font-size:clamp(1.9rem,5vw,3rem)}h2{font-size:clamp(1.5rem,3.5vw,2.2rem)}h3{font-size:1.15rem}
@@ -46,7 +46,8 @@
   .nav-cta{display:flex;align-items:center;gap:16px}.nav .btn{padding:11px 20px;font-size:.85rem;box-shadow:none}
   @media(max-width:760px){header{display:none}}
   .hero{position:relative;background:linear-gradient(180deg,#fff 0%,var(--bg-tint) 100%);overflow:hidden}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:64px 20px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;grid-template-areas:"top img""bottom img";gap:0 48px;align-items:start;padding:64px 20px}
+  .hero-top-text{grid-area:top;padding-bottom:20px}.hero-bottom{grid-area:bottom}.mobile-urgency-top{display:none}.mobile-badges-row{display:none}.mobile-br{display:none}
   .hero h1 span{color:var(--green-dark)}.hero ul{list-style:none;margin:22px 0 28px}
   .hero li{padding-left:34px;position:relative;margin-bottom:10px;font-weight:600;color:var(--heading)}
   .hero li::before{content:"✓";position:absolute;left:0;top:0;width:24px;height:24px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
@@ -56,7 +57,7 @@
   .badge-float.loc{bottom:auto;top:-18px;left:-18px;right:auto;color:var(--green-dark)}
   .urgency{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;max-width:100%;background:linear-gradient(180deg,#fff8e8,#fff0cc);border:1px solid #ffd980;color:#a86b00;font-weight:600;padding:9px 18px;border-radius:50px;font-size:.85rem;margin-bottom:18px;box-shadow:0 4px 12px rgba(255,180,0,.18)}
   .urgency strong{font-weight:800;color:#8a5600}
-  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:30px;padding:40px 20px}.badge-float{left:10px}}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;grid-template-areas:none;gap:30px;padding:40px 20px}.hero-img{grid-area:auto;grid-row:auto}.badge-float{left:10px}}
   .trust{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap;padding:30px 20px;border-top:1px solid #eee;border-bottom:1px solid #eee;background:#fff}
   .trust img{height:110px;width:auto;filter:none;opacity:.95}
   .trust-extra{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(112,59,131,.08);border:2px solid var(--green);border-radius:var(--radius);padding:18px 22px;min-width:155px;text-align:center;height:110px}
@@ -131,7 +132,13 @@
   @media(prefers-reduced-motion:reduce){*,.reveal,.stagger > *{animation:none !important;transition:none !important}.reveal,.stagger > *{opacity:1 !important;transform:none !important}}
   @media(max-width:760px){
     .section{padding:42px 0}h1{font-size:1.8rem;line-height:1.2}h2{font-size:1.45rem}
-    .hero-grid{gap:20px;padding:22px 20px}.hero-img{order:-1;margin-bottom:2px}.hero-img img{aspect-ratio:16/11}
+    .hero-grid{display:flex !important;flex-direction:column;padding:0 20px;gap:0}
+    .mobile-urgency-top{display:block !important;order:0;background:#FFF8E1;color:#7A5800;font-weight:700;font-size:.88rem;text-align:center;padding:9px 16px;border-radius:8px;margin:16px 0 12px;letter-spacing:.01em}
+    .hero-top-text{order:1}.hero-img{order:2;margin:14px 0 0;grid-area:auto !important;grid-row:auto !important}.hero-img img{aspect-ratio:16/9;object-position:center 18%}.hero-bottom{order:4;margin-top:14px}
+    .mobile-badges-row{order:3;display:flex !important;justify-content:center;gap:10px;margin:14px 0 0;flex-wrap:wrap}
+    .mobile-badge-item{background:#fff;border:1.5px solid #e5d8f0;border-radius:20px;padding:6px 12px;font-size:.8rem;font-weight:700;color:#703b83;white-space:nowrap;animation:bob 3.2s ease-in-out infinite}
+    .mobile-badge-item:nth-child(2){animation-delay:.4s}.mobile-badge-item:nth-child(3){animation-delay:.8s}
+    .mobile-br{display:block}
     .badge-float{left:auto;right:12px;bottom:-12px;font-size:.8rem;padding:9px 13px}.badge-float.loc{top:10px;left:10px;right:auto;bottom:auto}
     .hero .lead{display:none}.hero ul{display:none}.lead-mobile{display:block;font-size:1.02rem;color:var(--text);margin:6px 0 18px;line-height:1.55}
     .eyebrow{margin-bottom:10px}.urgency{font-size:.72rem;padding:7px 13px;gap:5px}
@@ -157,26 +164,30 @@
       <img src="https://kinder-kampfsport-muenchen.de/wp-content/uploads/2023/11/Schin-Zen-Logo-PD.svg" alt="Kampfkunstschule Schinhammer" width="38" height="38" onerror="this.src='https://kinder-kampfsport-muenchen.de/wp-content/uploads/2023/11/Schin-Zen-Logo-PT.svg'">
       <span>SCHIN-ZEN Kampfsportschulen Unterhaching</span>
     </div>
-    <div class="nav-cta"><a href="#anmeldung" class="btn">Jetzt Platz sichern</a></div>
+    <div class="nav-cta"><a href="#zum-formular" class="btn">Jetzt Platz sichern</a></div>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
   <div class="wrap hero-grid">
-    <div>
+    <div class="mobile-urgency-top">🔥 Schnuppertag · Sa., 19.09.2026</div>
+    <div class="hero-top-text">
       <div style="display:inline-block;background:#703b83;color:#fff;font-weight:800;font-size:.75rem;padding:6px 14px;border-radius:50px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">🎒 Zum Schulstart</div>
-      <div class="urgency" style="font-size:1.05rem">🔥 Kennenlerntag <strong>Sa. 19.9.2026</strong></div>
+      <div class="urgency" style="font-size:1.05rem">🔥 Schnuppertag <strong>Sa., 19.09.2026</strong></div>
       <h1>Kinder Kampfsport München <span>3,5–5 Jahre</span><br>Das Power Dragons Programm</h1>
       <p class="lead">Mehr als nur ein reines Kampfsportprogramm: Wir vermitteln Ihrem Kindergartenkind eine „Ja, ich schaffe das"-Einstellung – mit mehr Selbstbewusstsein, Konzentration und Lebenskompetenz für den Schulstart.</p>
       <p class="lead-mobile">Mehr Selbstbewusstsein, Konzentration &amp; Lebenskompetenz – spielerisch für Kinder von 3,5 bis 5 Jahren.</p>
+      <div class="mobile-badges-row"><span class="mobile-badge-item">⭐ 99% Weiterempfehlung</span><span class="mobile-badge-item">🏆 30+ Jahre</span><span class="mobile-badge-item">📍 Unterhaching</span></div>
+    </div>
+    <div class="hero-bottom">
       <ul>
         <li>Stärkung von Selbstbewusstsein &amp; Selbstvertrauen</li>
         <li>Grenzen aufzeigen und Nein sagen lernen</li>
         <li>Wertevermittlung: Respekt, Disziplin, Mut</li>
       </ul>
       <div class="btn-row">
-        <a href="#anmeldung" class="btn big">Gratis Kennenlerntag sichern →</a>
+        <a href="#zum-formular" class="btn big">Gratis Schnuppertag sichern →</a>
       </div>
       <p style="margin-top:8px;font-size:.9rem;font-weight:700;color:#e53e3e">🔴 Noch <span id="plaetze-cta"></span> freie Plätze</p>
       <p class="hero-note" style="margin-top:14px;font-size:.9rem;color:#777">✅ Aktuell <strong>kostenlos</strong> · ⏱ Anfrage in 60 Sekunden · 📍 Grünwalder Weg 20c, Unterhaching</p>
@@ -365,7 +376,7 @@
   <div class="wrap">
     <div class="center reveal" style="max-width:760px;margin:0 auto">
       <span class="eyebrow">Sei dabei!</span>
-      <h2>Nächster Kennenlerntag in Unterhaching:<br><strong>Samstag, 19.9.2026!</strong></h2>
+      <h2>Nächster Schnuppertag in Unterhaching:<br><strong>Sa., 19.09.2026!</strong></h2>
       <p class="lead" style="color:#ddd">Begrenzte Plätze! <strong style="color:#fff">Nur mit Voranmeldung.</strong></p>
     </div>
     <div class="slots stagger" style="max-width:760px;margin-left:auto;margin-right:auto">
@@ -383,14 +394,14 @@
       </div>
     </div>
     <div style="max-width:760px;margin:0 auto" class="reveal">
-      <h3 style="color:#fff;text-align:center;font-size:1.4rem;margin-bottom:14px;font-weight:800;letter-spacing:.01em">🎯 Jetzt Platz sichern</h3>
+      <h3 id="zum-formular" style="color:#fff;text-align:center;font-size:1.4rem;margin-bottom:14px;font-weight:800;letter-spacing:.01em">🎯 Jetzt Platz sichern</h3>
       <div class="form-box">
         <iframe src="https://ext.matool.de/ptformdyn/?hash=1bd8052bb9a22fbd" id="probeForm" title="Voranmeldung Probetraining Power Dragons" scrolling="no" frameborder="0" style="width:100%;border:0;border-radius:10px;display:block;"></iframe>
       </div>
       <p style="color:#888;font-size:.8rem;text-align:center;margin-top:8px"><a href="https://www.matool.de" target="_blank" rel="noopener" style="color:#777">made by MATOOL</a></p>
     </div>
     <div class="center reveal" style="max-width:680px;margin:34px auto 0">
-      <p style="color:#ddd">Der beste Einstieg für Ihr Kind ist an einem Kennenlerntag. Dort kann Ihr Kind an einem Probeunterricht teilnehmen und wir stellen die Programme für die Eltern vor. Am Kennenlerntag gibt es auch spezielle Einstiegsangebote.</p>
+      <p style="color:#ddd">Der beste Einstieg für Ihr Kind ist an einem Schnuppertag. Dort kann Ihr Kind an einem Probeunterricht teilnehmen und wir stellen die Programme für die Eltern vor. Am Schnuppertag gibt es auch spezielle Einstiegsangebote.</p>
       <p style="color:#aaa;margin-top:8px;font-weight:600">Wir freuen uns, Sie und Ihr Kind bald bei uns in der Schule begrüßen zu dürfen.</p>
       <p style="color:#bbb;margin-top:8px;font-style:italic">Die größte Reise beginnt immer mit dem ersten Schritt. Nicht morgen, sondern heute – mit Ihrer Anfrage zum Probeunterricht.</p>
     </div>
@@ -466,7 +477,7 @@
   </div>
 </footer>
 
-<div class="mobile-cta"><a href="#anmeldung" class="btn">Jetzt Platz sichern →</a></div>
+<div class="mobile-cta"><a href="#zum-formular" class="btn">Jetzt Platz sichern →</a></div>
 
 <script>
   var PLAETZE_DRAGONS = 13;
