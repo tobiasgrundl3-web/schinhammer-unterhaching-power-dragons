@@ -151,11 +151,17 @@
   .hero-badge-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
   .hero-standort-tag{display:none;background:rgba(112,59,131,.1);color:var(--green-dark);font-weight:700;font-size:.78rem;padding:5px 12px;border-radius:50px;border:1px solid rgba(112,59,131,.25)}
   @media(max-width:760px){.hero-standort-tag{display:inline-block}}
-  .mobile-schulstart-bar{display:none;background:linear-gradient(135deg,rgba(112,59,131,.07) 0%,rgba(112,59,131,.02) 100%);border-left:4px solid var(--green);padding:16px 20px}
-  .msb-title{font-weight:800;color:var(--heading);font-size:.95rem;margin-bottom:6px}
-  .msb-text{font-size:.85rem;color:var(--text);margin-bottom:8px;line-height:1.5}
-  .msb-rating{color:#fbbc04;font-size:.9rem;font-weight:600}.msb-rating strong{color:var(--heading)}
-  @media(max-width:760px){.mobile-schulstart-bar{display:block}}
+  /* Mobile Schulstart-Box */
+  .mobile-schulstart-bar{display:none}
+  @media(max-width:760px){
+    .mobile-schulstart-bar{display:block;background:#F7FAF9;padding:16px 20px 20px;border-bottom:1px solid #e8e8e8}
+    .mobile-schulstart-bar .msb-inner{background:#fff;border:1px solid #e8e8e8;border-radius:14px;padding:18px 16px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+    .mobile-schulstart-bar h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:#222222}
+    .mobile-schulstart-bar p{font-size:.9rem;color:#404040;margin-bottom:0;line-height:1.55}
+    .mobile-schulstart-bar .msb-stars{font-size:.85rem;font-weight:700;margin-top:12px;margin-bottom:0;color:#222222}
+    .mobile-schulstart-bar .msb-stars .star{color:#fbbc04}
+    .mobile-schulstart-bar .msb-stars .msb-rec{color:#5a2f6a}
+  }
 </style>
 </head>
 <body>
@@ -210,12 +216,12 @@
   </div>
 </section>
 
-<!-- MOBILE SCHULSTART BAR -->
+<!-- Mobile Schulstart-Box (nur Mobil sichtbar) -->
 <div class="mobile-schulstart-bar">
   <div class="msb-inner">
-    <p class="msb-title">🎓 Perfekte Vorbereitung auf den Schulstart</p>
-    <p class="msb-text">Mehr Konzentration, Ausdauer und Selbstvertrauen – genau das, was Ihr Kind für den Schulalltag braucht. Spielerisch und altersgerecht vermittelt.</p>
-    <p class="msb-rating">★★★★★ <strong>5,0</strong> · 99% Weiterempfehlung</p>
+    <h3>🎓 Perfekte Vorbereitung auf den Schulstart</h3>
+    <p>Mehr Konzentration, Ausdauer und Selbstvertrauen – genau das, was Ihr Kind für den Schulalltag braucht. Spielerisch und altersgerecht vermittelt.</p>
+    <p class="msb-stars"><span class="star">★★★★★</span> <strong>5,0</strong> · <span class="msb-rec">99% Weiterempfehlung</span></p>
   </div>
 </div>
 
