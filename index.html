@@ -134,8 +134,8 @@
     .section{padding:42px 0}h1{font-size:1.8rem;line-height:1.2}h2{font-size:1.45rem}
     .hero-grid{display:flex !important;flex-direction:column;padding:20px 20px 0;gap:0}
     .mobile-urgency-top{display:block !important;order:0;background:#FFF8E1;color:#7A5800;font-weight:700;font-size:.88rem;text-align:center;padding:9px 16px;border-radius:8px;margin:16px 0 12px;letter-spacing:.01em}
-    .hero-top-text{order:1}.hero-img{order:2;margin:16px 0 0;grid-area:auto !important;grid-row:auto !important}.hero-img img{aspect-ratio:16/9;object-position:center 10%}.hero-bottom{order:4;margin-top:16px;padding-bottom:28px}
-    .mobile-badges-row{order:3;display:flex !important;justify-content:center;gap:10px;margin:16px 0 0;flex-wrap:wrap}
+    .hero-top-text{order:1}.mobile-hero-cta{display:block !important;order:2;margin-top:16px}.hero-img{order:3;margin:16px 0 0;grid-area:auto !important;grid-row:auto !important}.hero-img img{aspect-ratio:16/9;object-position:center 10%}.hero-bottom{order:5;margin-top:16px;padding-bottom:28px}.hero-bottom .btn-row{display:none}.hero-bottom .plaetze-line{display:none}
+    .mobile-badges-row{order:4;display:flex !important;justify-content:center;gap:10px;margin:16px 0 0;flex-wrap:wrap}
     .mobile-badge-item{background:#fff;border:1.5px solid #e5d8f0;border-radius:20px;padding:6px 12px;font-size:.8rem;font-weight:700;color:#703b83;white-space:nowrap;animation:bob 3.2s ease-in-out infinite}
     .mobile-badge-item:nth-child(2){animation-delay:.4s}.mobile-badge-item:nth-child(3){animation-delay:.8s}
     .mobile-br{display:block}
@@ -148,6 +148,7 @@
     .mobile-cta .btn{width:100%;padding:14px 16px;font-size:.95rem;box-shadow:0 6px 16px rgba(112,59,131,.4)}
     .trust{gap:12px;padding:16px 14px}.lead{font-size:1rem}.pillars{gap:12px}.gallery{gap:8px}.slots{gap:12px}
   }
+  .mobile-hero-cta{display:none}
   .hero-badge-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
   .hero-standort-tag{display:none;background:rgba(112,59,131,.1);color:var(--green-dark);font-weight:700;font-size:.78rem;padding:5px 12px;border-radius:50px;border:1px solid rgba(112,59,131,.25)}
   @media(max-width:760px){.hero-standort-tag{display:inline-block}}
@@ -195,6 +196,13 @@
       <p class="lead">Mehr als nur ein reines Kampfsportprogramm: Wir vermitteln Ihrem Kindergartenkind eine „Ja, ich schaffe das"-Einstellung – mit mehr Selbstbewusstsein, Konzentration und Lebenskompetenz für den Schulstart.</p>
       <p class="lead-mobile">Mehr Selbstbewusstsein, Konzentration &amp; Lebenskompetenz – spielerisch für Kinder von 3,5 bis 5 Jahren.</p>
     </div>
+    <!-- Mobile CTA über Bild (nur mobil) -->
+    <div class="mobile-hero-cta">
+      <div class="btn-row">
+        <a href="#zum-formular" class="btn big">Gratis Schnuppertag sichern →</a>
+      </div>
+      <p style="margin-top:8px;font-size:.9rem;font-weight:700;color:#e53e3e;text-align:center">🔴 Noch <span id="plaetze-cta-m"></span> freie Plätze</p>
+    </div>
     <div class="hero-bottom">
       <ul>
         <li>Stärkung von Selbstbewusstsein &amp; Selbstvertrauen</li>
@@ -204,7 +212,7 @@
       <div class="btn-row">
         <a href="#zum-formular" class="btn big">Gratis Schnuppertag sichern →</a>
       </div>
-      <p style="margin-top:8px;font-size:.9rem;font-weight:700;color:#e53e3e">🔴 Noch <span id="plaetze-cta"></span> freie Plätze</p>
+      <p class="plaetze-line" style="margin-top:8px;font-size:.9rem;font-weight:700;color:#e53e3e">🔴 Noch <span id="plaetze-cta"></span> freie Plätze</p>
       <p class="hero-note" style="margin-top:14px;font-size:.9rem;color:#777">✅ Aktuell <strong>kostenlos</strong> · ⏱ Anfrage in 60 Sekunden · 📍 Grünwalder Weg 20c, Unterhaching</p>
     </div>
     <div class="mobile-badges-row"><span class="mobile-badge-item">⭐ 99% Weiterempfehlung</span><span class="mobile-badge-item">🏆 30+ Jahre</span><span class="mobile-badge-item">📍 Unterhaching</span></div>
@@ -514,6 +522,8 @@
     if(dSlot) dSlot.textContent = 'Noch ' + PLAETZE_DRAGONS + ' freie Plätze';
     if(tSlot) tSlot.textContent = 'Noch ' + PLAETZE_TIGERS + ' freie Plätze';
     if(dCta)  dCta.textContent  = PLAETZE_DRAGONS;
+    var dCtaM = document.getElementById('plaetze-cta-m');
+    if(dCtaM) dCtaM.textContent = PLAETZE_DRAGONS;
     if(dSlot && PLAETZE_DRAGONS <= 3) dSlot.classList.add('few');
     if(tSlot && PLAETZE_TIGERS <= 3) tSlot.classList.add('few');
   })();
