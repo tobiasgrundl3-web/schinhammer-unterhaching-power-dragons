@@ -202,6 +202,13 @@
   @media(max-width:1000px) and (min-width:861px){.hero-grid{gap:32px}.hero-grid > .form-box{flex-basis:380px;width:380px}}
   @media(max-width:860px){.hero-grid{flex-direction:column;padding:48px 20px;gap:40px}.hero-top-text{width:100%;max-width:512px;margin:0 auto}.hero-grid > .form-box{flex:auto;width:100%;max-width:512px;margin:0 auto;order:2}.hero .hero-badge-row{display:flex !important}.hero .hero-standort-tag{display:none}.hero .hero-img{order:initial}.hero .mobile-badges-row{margin-top:24px}}
   @media(max-width:760px){.hero-grid > .form-box{padding:20px}.hero h1{font-size:1.8rem}.hero .lead{font-size:1rem}}
+  @media(max-width:768px){
+    body{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+    .hero .urgency{display:block;width:fit-content;max-width:100%;margin-left:auto;margin-right:auto;text-align:center;font-size:clamp(1.53rem,2.16vw,1.89rem) !important;padding:17px 29px}
+    .hero .urgency strong{white-space:normal}
+    .mobile-cta{display:flex;transform:translateY(0);padding:16px max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+    .mobile-cta .btn{width:100%;padding:14px 16px;font-size:.95rem;line-height:1.2}
+  }
 </style>
 </head>
 <body>
@@ -654,7 +661,6 @@
       document.querySelectorAll('.reveal, .stagger').forEach(function(el){ revObs.observe(el); });
     }
   });
-  var bar=document.querySelector('.mobile-cta');if(bar){var anm=document.getElementById('anmeldung');var onScroll=function(){var show=window.scrollY>480;if(anm){var r=anm.getBoundingClientRect();if(r.top<window.innerHeight)show=false;}bar.classList.toggle('show',show);};window.addEventListener('scroll',onScroll,{passive:true});onScroll();}
   var scroll = document.querySelector('.reviews-scroll');
   if(scroll){ var isDown=false,startX,scrollLeft; scroll.addEventListener('mousedown',function(e){ isDown=true; startX=e.pageX-scroll.offsetLeft; scrollLeft=scroll.scrollLeft; }); scroll.addEventListener('mouseleave',function(){ isDown=false; }); scroll.addEventListener('mouseup',function(){ isDown=false; }); scroll.addEventListener('mousemove',function(e){ if(!isDown) return; e.preventDefault(); var x=e.pageX-scroll.offsetLeft; scroll.scrollLeft=scrollLeft-(x-startX); }); }
 </script>
