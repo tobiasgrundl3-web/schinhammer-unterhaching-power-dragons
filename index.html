@@ -249,12 +249,13 @@
           <label for="course">Kurs auswählen *</label>
           <select id="course" name="course" required>
             <option value="" disabled selected>Bitte wählen …</option>
+            <option value="Kinder 6 - 10 Jahre">Kinder 6 - 10 Jahre</option>
             <option value="Kindergartenkinder 3,5 - 5 Jahre">Kindergartenkinder 3,5 - 5 Jahre</option>
           </select>
         </div>
         <fieldset id="appointment-field" hidden disabled>
           <legend>Termin *</legend>
-          <label class="contact-radio"><input type="radio" name="appointment" value="2026-11-14T14:30" required>14.11.26 - 14:30 - Samstag (frei)</label>
+          <label class="contact-radio"><input type="radio" name="appointment" value="2026-11-14T14:30" required><span id="appointment-label">14.11.26 - 14:30 - Samstag (frei)</span></label>
         </fieldset>
         <div class="contact-field">
           <label for="parent-name">Dein Name *</label>
@@ -590,6 +591,12 @@
   const updateContactFields = function(){
     appointmentField.hidden = !course.value;
     appointmentField.disabled = !course.value;
+    const appointment = contactForm.elements.appointment;
+    const time = course.value === 'Kinder 6 - 10 Jahre' ? '16:15' : '14:30';
+    const appointmentValue = '2026-11-14T' + time;
+    if (appointment.value !== appointmentValue || !course.value) appointment.checked = false;
+    appointment.value = appointmentValue;
+    document.getElementById('appointment-label').textContent = '14.11.26 - ' + time + ' - Samstag (frei)';
     const bringCompanion = contactForm.elements.bringCompanion.value === 'ja';
     companionField.hidden = !bringCompanion;
     companionInput.disabled = !bringCompanion;
