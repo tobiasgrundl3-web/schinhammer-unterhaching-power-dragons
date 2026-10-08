@@ -107,8 +107,27 @@
   .slot.highlight{border-color:var(--green);background:rgba(112,59,131,.12)}
   .slot .time{font-size:1.6rem;font-weight:800;color:var(--green)}.slot .age{color:#ddd;margin:4px 0 10px}
   .slot .free{display:inline-block;background:var(--green);color:#fff;font-weight:700;font-size:.8rem;padding:5px 14px;border-radius:50px}.slot .free.few{background:#e74c3c}
-  .form-box{background:#fff;border-radius:var(--radius);padding:10px;box-shadow:var(--shadow);margin-top:8px}
-  .form-box iframe{width:100%;min-height:400px;border:0;border-radius:10px;display:block;transition:height .25s ease}
+  .form-box{grid-area:form;min-width:0;background:var(--white);color:var(--text);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);border:1px solid var(--bg);line-height:1.5}
+  .contact-form{display:flex;flex-direction:column;gap:16px}
+  .contact-field{display:flex;flex-direction:column;gap:6px}
+  .contact-form label,.contact-form legend{font-size:14px;font-weight:600;color:var(--heading)}
+  .contact-form input:not([type=radio]),.contact-form select{width:100%;min-width:0;min-height:44px;border:1px solid var(--text);border-radius:8px;padding:10px 12px;font:inherit;background:var(--white);color:var(--text)}
+  .contact-form input::placeholder{color:var(--text);opacity:.75}
+  .contact-form :focus-visible{outline:2px solid var(--green);outline-offset:3px}
+  .contact-form fieldset{border:0;min-width:0}
+  .contact-form legend{margin-bottom:8px}
+  .contact-options{display:flex;flex-wrap:wrap;gap:12px 24px}
+  .contact-form .contact-radio{display:flex;align-items:center;gap:8px;font-weight:400;cursor:pointer}
+  .contact-form input[type=radio]{width:18px;height:18px;accent-color:var(--green);flex-shrink:0}
+  .contact-form p{margin:0;font-size:14px}
+  .contact-form a{color:var(--green-dark);text-decoration:underline}
+  .contact-form .btn{width:100%;justify-content:center;font-family:inherit;line-height:1.4;padding:16px 12px}
+  .contact-form .btn:disabled{opacity:.65;cursor:wait;transform:none}
+  .contact-note{text-align:center}
+  .contact-success:focus{outline:2px solid var(--green);outline-offset:4px}
+  .contact-success h2{font-size:1.4rem;margin-bottom:12px}
+  .contact-success p{margin:0}
+  .form-box [hidden]{display:none !important}
   @media(max-width:760px){.slots{grid-template-columns:1fr}}
   .faq{max-width:780px;margin:30px auto 0}details{background:#fff;border:1px solid #eee;border-radius:12px;margin-bottom:12px;overflow:hidden}
   details[open]{box-shadow:var(--shadow)}summary{cursor:pointer;padding:18px 22px;font-weight:700;color:var(--heading);list-style:none;display:flex;justify-content:space-between;align-items:center}
@@ -165,6 +184,10 @@
     .mobile-schulstart-bar .msb-stars .star{color:#fbbc04}
     .mobile-schulstart-bar .msb-stars .msb-rec{color:#5a2f6a}
   }
+  .hero-grid{grid-template-areas:"top form" "bottom form" "img form"}
+  .hero-grid > .hero-img{grid-area:img;margin-top:24px}
+  @media(max-width:860px){.hero-grid{grid-template-areas:"top" "form" "bottom" "img"}.hero-top-text,.hero-bottom,.form-box{min-width:0}.hero-grid > .hero-img{margin-top:0}}
+  @media(max-width:760px){.hero-grid > .form-box{order:1;width:100%;margin:4px 0 24px;padding:20px}.hero-grid > .hero-img{margin-top:4px}}
 </style>
 </head>
 <body>
@@ -197,6 +220,56 @@
       <h1>Kinder Kampfsport München <span>3,5–5 Jahre</span><br>Das Power Dragons Programm</h1>
       <p class="lead">Mehr als nur ein reines Kampfsportprogramm: Wir vermitteln Ihrem Kindergartenkind eine „Ja, ich schaffe das"-Einstellung – mit mehr Selbstbewusstsein, Konzentration und Lebenskompetenz – erleben Sie es beim Schnuppertag am 14.11.2026.</p>
       <p class="lead-mobile">Mehr Selbstbewusstsein · Mehr Konzentration · Mehr Bewegung</p>
+    </div>
+    <div class="form-box" id="zum-formular">
+      <form class="contact-form" id="contact-form" aria-label="Probetraining anfragen">
+        <div class="contact-field">
+          <label for="course">Kurs auswählen *</label>
+          <select id="course" name="course" required>
+            <option value="" disabled selected>Bitte wählen …</option>
+            <option value="Kindergartenkinder 3,5 - 5 Jahre">Kindergartenkinder 3,5 - 5 Jahre</option>
+          </select>
+        </div>
+        <fieldset id="appointment-field" hidden disabled>
+          <legend>Termin *</legend>
+          <label class="contact-radio"><input type="radio" name="appointment" value="2026-11-14T14:30" required>14.11.26 - 14:30 - Samstag (frei)</label>
+        </fieldset>
+        <div class="contact-field">
+          <label for="parent-name">Dein Name *</label>
+          <input id="parent-name" name="parentName" placeholder="Vor- und Nachname" autocomplete="name" required>
+        </div>
+        <div class="contact-field">
+          <label for="child-name">Vorname deines Kindes *</label>
+          <input id="child-name" name="childName" placeholder="Vorname" autocomplete="off" required>
+        </div>
+        <div class="contact-field">
+          <label for="phone">Handynummer *</label>
+          <input type="tel" id="phone" name="phone" placeholder="0176 …" autocomplete="tel" required>
+        </div>
+        <div class="contact-field">
+          <label for="email">E-Mail *</label>
+          <input type="email" id="email" name="email" placeholder="deine@email.de" autocomplete="email" required>
+        </div>
+        <fieldset>
+          <legend>Ich möchte noch jemanden mitbringen:</legend>
+          <div class="contact-options">
+            <label class="contact-radio"><input type="radio" name="bringCompanion" value="ja">ja</label>
+            <label class="contact-radio"><input type="radio" name="bringCompanion" value="nein" checked>nein</label>
+          </div>
+        </fieldset>
+        <div class="contact-field" id="companion-field" hidden>
+          <label for="companion">Begleiter</label>
+          <input id="companion" name="companion" placeholder="Begleiter" disabled>
+        </div>
+        <p>Mit dem Absenden erklärst du dich damit einverstanden, dass wir dich kontaktieren. Mehr dazu in unserer <a href="https://www.kinder-kampfsport-schinhammer.de/datenschutz/">Datenschutzerklärung</a>.</p>
+        <p id="contact-error" role="alert" hidden></p>
+        <button class="btn" type="submit">PROBETRAINING ANFRAGEN</button>
+        <p class="contact-note">Kostenlos · Unverbindlich · Wir melden uns innerhalb von 24h.</p>
+      </form>
+      <div class="contact-success" id="contact-success" role="status" tabindex="-1" hidden>
+        <h2>Vielen Dank für dein Interesse!</h2>
+        <p id="contact-success-message"></p>
+      </div>
     </div>
     <!-- Mobile CTA unter Bild (nur mobil) -->
     <div class="mobile-hero-cta">
@@ -254,7 +327,7 @@
         <img src="logo-dragons.jpg" alt="Power Dragons Logo" width="96" height="96" loading="lazy">
         <div class="name">Power Dragons</div>
         <div class="age">für Kindergartenkinder<br>von 3,5 bis 5 Jahren</div>
-        <a href="#anmeldung" class="btn" style="padding:10px 20px;font-size:.85rem;box-shadow:none">Termin sichern</a>
+        <a href="#zum-formular" class="btn" style="padding:10px 20px;font-size:.85rem;box-shadow:none">Termin sichern</a>
       </div>
       <div class="pcard">
         <img src="logo-tigers.jpg" alt="Power Tigers Logo" width="96" height="96" loading="lazy">
@@ -269,7 +342,7 @@
         <a href="https://www.kinder-kampfsport-schinhammer.de/kampfsport-muenchen-teenager-11-15/" class="accent" style="font-weight:700">Mehr erfahren →</a>
       </div>
     </div>
-    <div class="btn-row center" style="margin-top:30px"><a href="#anmeldung" class="btn reveal">Termin vereinbaren</a></div>
+    <div class="btn-row center" style="margin-top:30px"><a href="#zum-formular" class="btn reveal">Termin vereinbaren</a></div>
   </div>
 </section>
 
@@ -289,7 +362,7 @@
       <div class="pillar"><div class="ic">🎯</div><b>Lebenskompetenz-<br>Schule</b></div>
     </div>
     <p class="center reveal" style="max-width:820px;margin:30px auto 0;font-size:1.08rem;font-weight:700;color:var(--heading)">Das wertvollste Kinder-Kampfsportprogramm, das es je gegeben hat.</p>
-    <div class="btn-row center" style="margin-top:30px"><a href="#anmeldung" class="btn big reveal">Termin vereinbaren →</a></div>
+    <div class="btn-row center" style="margin-top:30px"><a href="#zum-formular" class="btn big reveal">Termin vereinbaren →</a></div>
   </div>
 </section>
 
@@ -307,7 +380,7 @@
       <img src="gallery-2.jpg" alt="Power Dragons Kinder beim Training" loading="lazy">
       <img src="gallery-3.jpg" alt="Power Dragons Programm München" loading="lazy" style="object-position:center 30%">
     </div>
-    <div class="btn-row center" style="margin-top:30px"><a href="#anmeldung" class="btn big reveal">Termin vereinbaren →</a></div>
+    <div class="btn-row center" style="margin-top:30px"><a href="#zum-formular" class="btn big reveal">Termin vereinbaren →</a></div>
   </div>
 </section>
 
@@ -331,7 +404,7 @@
       <div>Lernen, sich selbst zu kontrollieren</div>
       <div>Lernen, sich anderen gegenüber respektvoll zu verhalten</div>
     </div>
-    <div class="btn-row center" style="margin-top:36px"><a href="#anmeldung" class="btn big reveal">Termin vereinbaren →</a></div>
+    <div class="btn-row center" style="margin-top:36px"><a href="#zum-formular" class="btn big reveal">Termin vereinbaren →</a></div>
   </div>
 </section>
 
@@ -373,7 +446,7 @@
       <img src="gallery-2.jpg" alt="Power Dragons Sicherheits- und Lebenskompetenz" style="border-radius:var(--radius);max-width:680px;width:100%;margin:0 auto;box-shadow:var(--shadow)" loading="lazy">
     </div>
     <p class="center reveal" style="max-width:780px;margin:24px auto 0;font-size:1.05rem">Diese Fähigkeiten werden Ihrem Kind altersgerecht mit speziellen Übungen und Spielen gezielt vermittelt, sodass auch immer ein großer Lerneffekt damit verbunden ist. Wir werden Ihr Kind durch unser Power Dragons Programm nachhaltig und positiv in seiner Entwicklung unterstützen.</p>
-    <div class="btn-row center" style="margin-top:30px"><a href="#anmeldung" class="btn big reveal">Termin vereinbaren →</a></div>
+    <div class="btn-row center" style="margin-top:30px"><a href="#zum-formular" class="btn big reveal">Termin vereinbaren →</a></div>
   </div>
 </section>
 
@@ -429,13 +502,7 @@
         <span class="free" id="plaetze-tigers-slot">freie Plätze</span>
       </div>
     </div>
-    <div style="max-width:760px;margin:0 auto" class="reveal">
-      <h3 id="zum-formular" style="color:#fff;text-align:center;font-size:1.4rem;margin-bottom:14px;font-weight:800;letter-spacing:.01em">🎯 Jetzt Platz sichern</h3>
-      <div class="form-box">
-        <iframe src="https://ext.matool.de/ptformdyn/?hash=1bd8052bb9a22fbd" id="probeForm" title="Voranmeldung Probetraining Power Dragons" scrolling="no" frameborder="0" style="width:100%;border:0;border-radius:10px;display:block;"></iframe>
-      </div>
-      <p style="color:#888;font-size:.8rem;text-align:center;margin-top:8px"><a href="https://www.matool.de" target="_blank" rel="noopener" style="color:#777">made by MATOOL</a></p>
-    </div>
+    <div class="btn-row center reveal"><a href="#zum-formular" class="btn big">Jetzt Platz sichern →</a></div>
     <div class="center reveal" style="max-width:680px;margin:34px auto 0">
       <p style="color:#ddd">Der beste Einstieg für Ihr Kind ist an einem Schnuppertag. Dort kann Ihr Kind an einem Probeunterricht teilnehmen und wir stellen die Programme für die Eltern vor. Am Schnuppertag gibt es auch spezielle Einstiegsangebote.</p>
       <p style="color:#aaa;margin-top:8px;font-weight:600">Wir freuen uns, Sie und Ihr Kind bald bei uns in der Schule begrüßen zu dürfen.</p>
@@ -479,7 +546,7 @@
         <img src="https://kinder-kampfsport-muenchen.de/wp-content/uploads/2023/11/Schin-Zen-Logo-PD.svg" alt="Schinhammer Unterhaching" loading="lazy" onerror="this.src='https://kinder-kampfsport-muenchen.de/wp-content/uploads/2023/11/Schin-Zen-Logo-PT.svg'">
         <h4>Kampfkunstschule Schinhammer</h4>
         <p>Grünwalder Weg 20c<br>82008 Unterhaching</p>
-        <a href="#anmeldung" class="btn" style="margin-top:12px">Termin sichern</a>
+        <a href="#zum-formular" class="btn" style="margin-top:12px">Termin sichern</a>
       </div>
       <div class="loc">
         <img src="https://kinder-kampfsport-muenchen.de/wp-content/uploads/2023/11/Schin-Zen-Logo-PD.svg" alt="Schin-Zen Bogenhausen" loading="lazy" onerror="this.src='https://kinder-kampfsport-muenchen.de/wp-content/uploads/2023/11/Schin-Zen-Logo-PT.svg'">
@@ -499,7 +566,7 @@
       </div>
       <div>
         <h5>Programme</h5>
-        <p><a href="#anmeldung">Power Dragons (3,5–5 J.)</a><br><a href="https://probetraining.kinder-kampfsport-schinhammer.de/">Power Tigers (6–10 J.)</a><br><a href="https://www.kinder-kampfsport-schinhammer.de/kampfsport-muenchen-teenager-11-15/">Power Panthers (11–15 J.)</a></p>
+        <p><a href="#zum-formular">Power Dragons (3,5–5 J.)</a><br><a href="https://probetraining.kinder-kampfsport-schinhammer.de/">Power Tigers (6–10 J.)</a><br><a href="https://www.kinder-kampfsport-schinhammer.de/kampfsport-muenchen-teenager-11-15/">Power Panthers (11–15 J.)</a></p>
       </div>
       <div>
         <h5>Rechtliches</h5>
@@ -516,6 +583,57 @@
 <div class="mobile-cta"><a href="#zum-formular" class="btn">Jetzt Platz sichern →</a></div>
 
 <script>
+  const FORM_ENDPOINT = ''; // TODO: Endpunkt für den Formularversand eintragen. Leer = Vorschau ohne Datenversand.
+  const contactForm = document.getElementById('contact-form');
+  const course = document.getElementById('course');
+  const appointmentField = document.getElementById('appointment-field');
+  const companionField = document.getElementById('companion-field');
+  const companionInput = document.getElementById('companion');
+  const updateContactFields = function(){
+    appointmentField.hidden = !course.value;
+    appointmentField.disabled = !course.value;
+    const bringCompanion = contactForm.elements.bringCompanion.value === 'ja';
+    companionField.hidden = !bringCompanion;
+    companionInput.disabled = !bringCompanion;
+  };
+  contactForm.addEventListener('change', updateContactFields);
+  window.addEventListener('pageshow', updateContactFields);
+  updateContactFields();
+  contactForm.addEventListener('submit', async function(event){
+    event.preventDefault();
+    if (!contactForm.reportValidity()) return;
+    const button = contactForm.querySelector('button[type="submit"]');
+    if (button.disabled) return;
+    const error = document.getElementById('contact-error');
+    error.hidden = true;
+    button.disabled = true;
+    button.textContent = 'WIRD GESENDET …';
+    try {
+      if (FORM_ENDPOINT) {
+        const response = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(contactForm))),
+          signal: AbortSignal.timeout(15000)
+        });
+        if (!response.ok) throw new Error('Formularversand fehlgeschlagen');
+      }
+      document.getElementById('contact-success-message').textContent = FORM_ENDPOINT
+        ? 'Deine Anfrage wurde erfolgreich gesendet. Wir melden uns innerhalb von 24h bei dir.'
+        : 'Das Formular wurde erfolgreich ausgefüllt. Der Versand ist noch nicht aktiviert – es wurden keine Daten verschickt.';
+      contactForm.hidden = true;
+      const success = document.getElementById('contact-success');
+      success.hidden = false;
+      success.focus({ preventScroll: true });
+      document.getElementById('zum-formular').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+    } catch (err) {
+      error.textContent = 'Deine Anfrage konnte nicht gesendet werden. Bitte versuche es erneut.';
+      error.hidden = false;
+    } finally {
+      button.disabled = false;
+      button.textContent = 'PROBETRAINING ANFRAGEN';
+    }
+  });
   var PLAETZE_DRAGONS = 13;
   var PLAETZE_TIGERS  = 15;
   (function(){
@@ -546,7 +664,6 @@
     }
   });
   var bar=document.querySelector('.mobile-cta');if(bar){var anm=document.getElementById('anmeldung');var onScroll=function(){var show=window.scrollY>480;if(anm){var r=anm.getBoundingClientRect();if(r.top<window.innerHeight)show=false;}bar.classList.toggle('show',show);};window.addEventListener('scroll',onScroll,{passive:true});onScroll();}
-  (function(){var n=25;var h=10;var k=0;var d=document.getElementById('probeForm');if(!d)return;var f;var b=window.addEventListener?'addEventListener':'attachEvent';var c=window[b];var o=b=='attachEvent'?'onmessage':'message';c(o,function(e){if(e.data===parseInt(e.data)){if(e.data==99999999){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:"formular_abgesendet"});if(typeof fbq!=="undefined"){fbq("track","Lead");}console.log("MA Tool GoTr(): formular_abgesendet → dataLayer");var g=function(m,l){var s=document.scrollingElement||document.documentElement,q=s.scrollTop,p=m-q,r=+new Date(),a=function(v,u,x,w){v/=w/2;if(v<1){return x/2*v*v+u}v--;return -x/2*(v*(v-2)-1)+u},i=function(){var v=+new Date();var t=v-r;s.scrollTop=parseInt(a(t,q,p,l));if(t<l){requestAnimationFrame(i)}else{s.scrollTop=m}};i()};g(d.getBoundingClientRect().top+document.documentElement.scrollTop-(Math.max(document.documentElement.clientHeight,window.innerHeight||0)/2),500)}else{f=e.data}}},false);var j=window.setInterval(function(){var a=d.offsetHeight;k=Math.round((f-a)/h);k=Math.abs(k);if(k<1){k=0}if(f>0&&f!=a){if((f-a)>0){d.height=(a+k)+'px'}else{d.height=(a-k)+'px'}}},n)})();
   var scroll = document.querySelector('.reviews-scroll');
   if(scroll){ var isDown=false,startX,scrollLeft; scroll.addEventListener('mousedown',function(e){ isDown=true; startX=e.pageX-scroll.offsetLeft; scrollLeft=scroll.scrollLeft; }); scroll.addEventListener('mouseleave',function(){ isDown=false; }); scroll.addEventListener('mouseup',function(){ isDown=false; }); scroll.addEventListener('mousemove',function(e){ if(!isDown) return; e.preventDefault(); var x=e.pageX-scroll.offsetLeft; scroll.scrollLeft=scrollLeft-(x-startX); }); }
 </script>
