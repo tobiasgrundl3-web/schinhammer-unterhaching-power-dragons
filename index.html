@@ -184,10 +184,23 @@
     .mobile-schulstart-bar .msb-stars .star{color:#fbbc04}
     .mobile-schulstart-bar .msb-stars .msb-rec{color:#5a2f6a}
   }
-  .hero-grid{grid-template-areas:"top form" "bottom form" "img form"}
-  .hero-grid > .hero-img{grid-area:img;margin-top:24px}
-  @media(max-width:860px){.hero-grid{grid-template-areas:"top" "form" "bottom" "img"}.hero-top-text,.hero-bottom,.form-box{min-width:0}.hero-grid > .hero-img{margin-top:0}}
-  @media(max-width:760px){.hero-grid > .form-box{order:1;width:100%;margin:4px 0 24px;padding:20px}.hero-grid > .hero-img{margin-top:4px}}
+  .hero-grid{display:flex;align-items:flex-start;justify-content:space-between;max-width:1120px;padding:80px 20px;gap:48px}
+  .hero-top-text{flex:1;min-width:0;max-width:55%;padding:0}
+  .hero-top-text > h1,.hero-top-text > .lead,.hero-top-text > ul,.hero-top-text > .hero-img{max-width:512px}
+  .hero h1{font-size:clamp(1.8rem,3.3vw,2.5rem);margin-bottom:20px}
+  .hero .lead{display:block;line-height:1.6;margin-bottom:0}
+  .hero ul{display:block;margin:20px 0 24px}
+  .hero li{line-height:1.5}
+  .hero .hero-img{width:100%;margin:0}
+  .hero .hero-img img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:16px}
+  .hero .badge-float.loc{top:12px;left:12px}
+  .hero .badge-float:not(.loc){bottom:12px;left:12px;right:12px;font-size:14px;padding:8px 12px}
+  .hero-grid > .form-box{flex:0 0 420px;width:420px;max-width:100%;font-family:inherit}
+  .hero .hero-note{display:block;text-align:center}
+  .hero .urgency{white-space:normal;flex-wrap:wrap;font-size:clamp(.85rem,1.2vw,1.05rem) !important;animation:none}
+  @media(max-width:1000px) and (min-width:861px){.hero-grid{gap:32px}.hero-grid > .form-box{flex-basis:380px;width:380px}}
+  @media(max-width:860px){.hero-grid{flex-direction:column;padding:48px 20px;gap:40px}.hero-top-text{width:100%;max-width:512px;margin:0 auto}.hero-grid > .form-box{flex:auto;width:100%;max-width:512px;margin:0 auto;order:2}.hero .hero-badge-row{display:flex !important}.hero .hero-standort-tag{display:none}.hero .hero-img{order:initial}.hero .mobile-badges-row{margin-top:24px}}
+  @media(max-width:760px){.hero-grid > .form-box{padding:20px}.hero h1{font-size:1.8rem}.hero .lead{font-size:1rem}}
 </style>
 </head>
 <body>
@@ -219,7 +232,17 @@
       <div class="urgency" style="font-size:1.05rem">🔥 Schnuppertag <strong>Samstag, 14.11.2026</strong></div>
       <h1>Kinder Kampfsport München <span>3,5–5 Jahre</span><br>Das Power Dragons Programm</h1>
       <p class="lead">Mehr als nur ein reines Kampfsportprogramm: Wir vermitteln Ihrem Kindergartenkind eine „Ja, ich schaffe das"-Einstellung – mit mehr Selbstbewusstsein, Konzentration und Lebenskompetenz – erleben Sie es beim Schnuppertag am 14.11.2026.</p>
-      <p class="lead-mobile">Mehr Selbstbewusstsein · Mehr Konzentration · Mehr Bewegung</p>
+      <ul>
+        <li>Stärkung von Selbstbewusstsein &amp; Selbstvertrauen</li>
+        <li>Grenzen aufzeigen und Nein sagen lernen</li>
+        <li>Wertevermittlung: Respekt, Disziplin, Mut</li>
+      </ul>
+      <div class="hero-img">
+        <img src="header.jpg" alt="Kindergartenkinder beim Power Dragons Karate-Training in Unterhaching" width="640" height="480" loading="eager" fetchpriority="high" decoding="sync">
+        <div class="badge-float loc"><span class="dot"></span>Unterhaching</div>
+        <div class="badge-float"><span class="dot"></span>Zum Schnuppertag am 14.11.2026</div>
+      </div>
+      <div class="mobile-badges-row"><span class="mobile-badge-item">⭐ 99% Weiterempfehlung</span><span class="mobile-badge-item">🏆 30+ Jahre</span><span class="mobile-badge-item">📍 Unterhaching</span></div>
     </div>
     <div class="form-box" id="zum-formular">
       <form class="contact-form" id="contact-form" aria-label="Probetraining anfragen">
@@ -263,39 +286,15 @@
         </div>
         <p>Mit dem Absenden erklärst du dich damit einverstanden, dass wir dich kontaktieren. Mehr dazu in unserer <a href="https://www.kinder-kampfsport-schinhammer.de/datenschutz/">Datenschutzerklärung</a>.</p>
         <p id="contact-error" role="alert" hidden></p>
-        <button class="btn" type="submit">PROBETRAINING ANFRAGEN</button>
+        <button class="btn" type="submit">GRATIS SCHNUPPERTAG SICHERN</button>
+        <p class="plaetze-line" style="font-size:.9rem;font-weight:700;color:#e53e3e;text-align:center">🔴 Noch <span id="plaetze-cta"></span> freie Plätze</p>
+        <p class="hero-note" style="font-size:.9rem;color:#777">✅ Aktuell <strong>kostenlos</strong> · ⏱ Anfrage in 60 Sekunden · 📍 Grünwalder Weg 20c, Unterhaching</p>
         <p class="contact-note">Kostenlos · Unverbindlich · Wir melden uns innerhalb von 24h.</p>
       </form>
       <div class="contact-success" id="contact-success" role="status" tabindex="-1" hidden>
         <h2>Vielen Dank für dein Interesse!</h2>
         <p id="contact-success-message"></p>
       </div>
-    </div>
-    <!-- Mobile CTA unter Bild (nur mobil) -->
-    <div class="mobile-hero-cta">
-      <p class="mobile-lead-full">Mehr als nur ein reines Kampfsportprogramm: Wir vermitteln Ihrem Kindergartenkind eine „Ja, ich schaffe das“-Einstellung – mit mehr Selbstbewusstsein, Konzentration und Lebenskompetenz – erleben Sie es beim Schnuppertag am 14.11.2026.</p>
-      <div class="btn-row">
-        <a href="#zum-formular" class="btn big">Gratis Schnuppertag sichern →</a>
-      </div>
-      <p style="margin-top:8px;font-size:.9rem;font-weight:700;color:#e53e3e;text-align:center">🔴 Noch <span id="plaetze-cta-m"></span> freie Plätze</p>
-    </div>
-    <div class="hero-bottom">
-      <ul>
-        <li>Stärkung von Selbstbewusstsein &amp; Selbstvertrauen</li>
-        <li>Grenzen aufzeigen und Nein sagen lernen</li>
-        <li>Wertevermittlung: Respekt, Disziplin, Mut</li>
-      </ul>
-      <div class="btn-row">
-        <a href="#zum-formular" class="btn big">Gratis Schnuppertag sichern →</a>
-      </div>
-      <p class="plaetze-line" style="margin-top:8px;font-size:.9rem;font-weight:700;color:#e53e3e">🔴 Noch <span id="plaetze-cta"></span> freie Plätze</p>
-      <p class="hero-note" style="margin-top:14px;font-size:.9rem;color:#777">✅ Aktuell <strong>kostenlos</strong> · ⏱ Anfrage in 60 Sekunden · 📍 Grünwalder Weg 20c, Unterhaching</p>
-    </div>
-    <div class="mobile-badges-row"><span class="mobile-badge-item">⭐ 99% Weiterempfehlung</span><span class="mobile-badge-item">🏆 30+ Jahre</span><span class="mobile-badge-item">📍 Unterhaching</span></div>
-    <div class="hero-img">
-      <img src="header.jpg" alt="Kindergartenkinder beim Power Dragons Karate-Training in Unterhaching" width="640" height="480" loading="eager" fetchpriority="high" decoding="sync">
-      <div class="badge-float loc"><span class="dot"></span>Unterhaching</div>
-      <div class="badge-float"><span class="dot"></span>Zum Schnuppertag am 14.11.2026</div>
     </div>
   </div>
 </section>
@@ -631,7 +630,7 @@
       error.hidden = false;
     } finally {
       button.disabled = false;
-      button.textContent = 'PROBETRAINING ANFRAGEN';
+      button.textContent = 'GRATIS SCHNUPPERTAG SICHERN';
     }
   });
   var PLAETZE_DRAGONS = 13;
