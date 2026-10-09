@@ -265,8 +265,8 @@
           <input id="parent-name" name="parentName" placeholder="Vor- und Nachname" autocomplete="name" required>
         </div>
         <div class="contact-field">
-          <label for="child-name">Vorname deines Kindes *</label>
-          <input id="child-name" name="childName" placeholder="Vorname" autocomplete="off" required>
+          <label for="child-name">Nachname / Vorname deines Kindes *</label>
+          <input id="child-name" name="childName" placeholder="Nachname / Vorname" autocomplete="off" required>
         </div>
         <div class="contact-field">
           <label for="phone">Handynummer *</label>
@@ -275,17 +275,6 @@
         <div class="contact-field">
           <label for="email">E-Mail *</label>
           <input type="email" id="email" name="email" placeholder="deine@email.de" autocomplete="email" required>
-        </div>
-        <fieldset>
-          <legend>Ich möchte noch jemanden mitbringen:</legend>
-          <div class="contact-options">
-            <label class="contact-radio"><input type="radio" name="bringCompanion" value="ja">ja</label>
-            <label class="contact-radio"><input type="radio" name="bringCompanion" value="nein" checked>nein</label>
-          </div>
-        </fieldset>
-        <div class="contact-field" id="companion-field" hidden>
-          <label for="companion">Begleiter</label>
-          <input id="companion" name="companion" placeholder="Begleiter" disabled>
         </div>
         <p>Mit dem Absenden erklärst du dich damit einverstanden, dass wir dich kontaktieren. Mehr dazu in unserer <a href="https://www.kinder-kampfsport-schinhammer.de/datenschutz/">Datenschutzerklärung</a>.</p>
         <p id="contact-error" role="alert" hidden></p>
@@ -589,8 +578,6 @@
   const contactForm = document.getElementById('contact-form');
   const course = document.getElementById('course');
   const appointmentField = document.getElementById('appointment-field');
-  const companionField = document.getElementById('companion-field');
-  const companionInput = document.getElementById('companion');
   const updateContactFields = function(){
     appointmentField.hidden = !course.value;
     appointmentField.disabled = !course.value;
@@ -600,9 +587,6 @@
     if (appointment.value !== appointmentValue || !course.value) appointment.checked = false;
     appointment.value = appointmentValue;
     document.getElementById('appointment-label').textContent = '14.11.26 - ' + time + ' - Samstag (frei)';
-    const bringCompanion = contactForm.elements.bringCompanion.value === 'ja';
-    companionField.hidden = !bringCompanion;
-    companionInput.disabled = !bringCompanion;
   };
   contactForm.addEventListener('change', updateContactFields);
   window.addEventListener('pageshow', updateContactFields);
