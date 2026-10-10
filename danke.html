@@ -31,6 +31,9 @@
   .lead{font-size:1.12rem;max-width:680px;margin:24px auto 0;text-wrap:pretty}
   .next-steps{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:32px;margin:36px 0}
   .next-steps h2{font-size:1.5rem;margin-bottom:24px}
+  .next-steps .lead{margin:0 auto 1rem}
+  .next-steps .sub-heading{margin:32px 0 16px}
+  .next-steps .sign-off{margin:28px auto 0;color:var(--heading)}
   ol{display:flex;flex-direction:column;gap:16px;list-style:none;counter-reset:steps;text-align:left;max-width:540px;margin:0 auto}
   li{display:flex;align-items:center;gap:16px;counter-increment:steps;font-weight:600}
   li::before{content:counter(steps);display:flex;align-items:center;justify-content:center;flex:0 0 36px;height:36px;border-radius:50%;background:var(--green);color:var(--white);font-weight:700}
@@ -56,15 +59,13 @@
 </header>
 <main>
   <div class="wrap confirmation">
-    <h1>Vielen Dank für deine Anfrage!</h1>
-    <p class="lead">Wir haben deine Anfrage zum kostenlosen Schnuppertag erhalten und melden uns innerhalb von 24 Stunden bei dir.</p>
-    <section class="next-steps" aria-labelledby="next-steps-heading">
-      <h2 id="next-steps-heading">Was passiert jetzt?</h2>
-      <ol role="list">
-        <li>Wir prüfen deine Anfrage</li>
-        <li>Wir melden uns telefonisch oder per E-Mail</li>
-        <li>Du bekommst alle Infos zum Schnuppertag</li>
-      </ol>
+    <h1>🎉 Dein Platz am Schnuppertag ist jetzt fest reserviert!</h1>
+    <section class="next-steps">
+      <h2>Vielen Dank für deine Anmeldung zum Schnuppertag</h2>
+      <p class="lead">Wir freuen uns sehr, dich und dein Kind bald persönlich in unserer Kampfsportschule begrüßen zu dürfen. Dein Platz für den Schnuppertag ist hiermit verbindlich reserviert.</p>
+      <h2 class="sub-heading">🥋 Wir freuen uns auf euch!</h2>
+      <p class="lead">Bitte seid 10 Minuten vor Beginn bei uns, damit wir euch in Ruhe begrüßen können und dein Kind entspannt in den Schnuppertag starten kann.</p>
+      <p class="lead sign-off">Bis zum Schnuppertag.<br><strong>Dein Team der SCHIN-ZEN Kampfsportschulen</strong></p>
     </section>
     <a href="/" class="btn">Zurück zur Startseite</a>
   </div>
