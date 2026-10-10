@@ -46,18 +46,18 @@
   .nav-cta{display:flex;align-items:center;gap:16px}.nav .btn{padding:11px 20px;font-size:.85rem;box-shadow:none}
   @media(max-width:760px){header{display:none}}
   .hero{position:relative;background:linear-gradient(180deg,#fff 0%,var(--bg-tint) 100%);overflow:hidden}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;grid-template-areas:"top img""bottom img";gap:0 48px;align-items:start;padding:64px 20px}
-  .hero-top-text{grid-area:top;padding-bottom:20px}.hero-bottom{grid-area:bottom}.mobile-urgency-top{display:none}.mobile-badges-row{display:none}.mobile-br{display:none}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;column-gap:48px;row-gap:0;align-items:start;padding:64px 20px}
+  .hero-top-text{grid-column:1;grid-row:1}.mobile-badges-row{display:none}.mobile-br{display:none}
   .hero h1 span{color:var(--green-dark)}.hero ul{list-style:none;margin:22px 0 28px}
   .hero li{padding-left:34px;position:relative;margin-bottom:10px;font-weight:600;color:var(--heading)}
   .hero li::before{content:"✓";position:absolute;left:0;top:0;width:24px;height:24px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
-  .hero-img{position:relative}.hero-img img{border-radius:var(--radius);box-shadow:var(--shadow);width:100%;object-fit:cover;aspect-ratio:3/2;object-position:center 12%}
+  .hero-img{position:relative;grid-column:1;grid-row:2;margin:6px 0 24px}.hero-img img{border-radius:var(--radius);box-shadow:var(--shadow);width:100%;object-fit:cover;aspect-ratio:16/10;object-position:center 12%}
   .badge-float{position:absolute;bottom:-18px;left:-18px;background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:14px 18px;display:flex;align-items:center;gap:10px;font-weight:700;color:var(--heading);font-size:.95rem}
   .badge-float .dot{width:12px;height:12px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(112,59,131,.25)}
   .badge-float.loc{bottom:auto;top:-18px;left:-18px;right:auto;color:var(--green-dark)}
   .urgency{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;max-width:100%;background:linear-gradient(180deg,#fff8e8,#fff0cc);border:1px solid #ffd980;color:#a86b00;font-weight:600;padding:9px 18px;border-radius:50px;font-size:.85rem;margin-bottom:18px;box-shadow:0 4px 12px rgba(255,180,0,.18)}
   .urgency strong{font-weight:800;color:#8a5600}
-  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;grid-template-areas:none;gap:30px;padding:40px 20px}.hero-img{grid-area:auto;grid-row:auto}.badge-float{left:10px}}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:20px;padding:30px 20px}.hero-img{grid-column:1;grid-row:auto;align-self:auto;margin:0}.hero-top-text,.hero-form{grid-column:1;grid-row:auto}.hero-form{position:static}.badge-float{left:10px}}
   .trust{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap;padding:30px 20px;border-top:1px solid #eee;border-bottom:1px solid #eee;background:#fff}
   .trust img{height:110px;width:auto;filter:none;opacity:.95}
   .trust-extra{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(112,59,131,.08);border:2px solid var(--green);border-radius:var(--radius);padding:18px 22px;min-width:155px;text-align:center;height:110px}
@@ -107,8 +107,6 @@
   .slot.highlight{border-color:var(--green);background:rgba(112,59,131,.12)}
   .slot .time{font-size:1.6rem;font-weight:800;color:var(--green)}.slot .age{color:#ddd;margin:4px 0 10px}
   .slot .free{display:inline-block;background:var(--green);color:#fff;font-weight:700;font-size:.8rem;padding:5px 14px;border-radius:50px}.slot .free.few{background:#e74c3c}
-  .form-box{background:#fff;border-radius:var(--radius);padding:10px;box-shadow:var(--shadow);margin-top:8px}
-  .form-box iframe{width:100%;min-height:400px;border:0;border-radius:10px;display:block;transition:height .25s ease}
   @media(max-width:760px){.slots{grid-template-columns:1fr}}
   .faq{max-width:780px;margin:30px auto 0}details{background:#fff;border:1px solid #eee;border-radius:12px;margin-bottom:12px;overflow:hidden}
   details[open]{box-shadow:var(--shadow)}summary{cursor:pointer;padding:18px 22px;font-weight:700;color:var(--heading);list-style:none;display:flex;justify-content:space-between;align-items:center}
@@ -165,6 +163,91 @@
     .mobile-schulstart-bar .msb-stars .star{color:#fbbc04}
     .mobile-schulstart-bar .msb-stars .msb-rec{color:#5a2f6a}
   }
+  @media(max-width:760px){
+    .hero-grid{padding:0 20px}.hero-top-text{order:1;padding:10px 0 6px}.hero-img{order:2;margin:0}.mobile-badges-row{order:4}
+    .hero-img img{height:240px!important;width:100%!important;aspect-ratio:unset!important;object-fit:cover;object-position:center 18%}
+    .hero .lead{display:block!important;font-size:.92rem;line-height:1.6;margin-bottom:12px}
+  }
+  .hero-form{grid-column:2;grid-row:1/4;align-self:start;position:sticky;top:92px}
+  .f-field{margin-bottom:14px;border:0;padding:0;min-width:0}
+  .f-label{display:block;font-weight:700;color:var(--heading);font-size:.9rem;margin-bottom:6px;line-height:1.3;padding:0}
+  .f-input{width:100%;font:inherit;font-size:16px;line-height:1.4;color:var(--heading);background:#fff;border:1.5px solid #d9d9d9;border-radius:8px;padding:12px 14px;transition:border-color .15s,box-shadow .15s}
+  .f-input::placeholder{color:#9a9a9a}
+  .f-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(112,59,131,.18)}
+  select.f-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:42px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23703b83' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+  select.f-input:invalid{color:#9a9a9a}select.f-input option{color:var(--heading)}
+  .f-field.invalid .f-input,.f-field.invalid .f-radio{border-color:#c0392b}
+  .f-error{display:none;color:#c0392b;font-size:.8rem;font-weight:600;margin:5px 0 0;line-height:1.4}
+  .f-field.invalid .f-error{display:block}
+  .f-radios{display:flex;flex-direction:column;gap:8px}
+  .f-radio{display:flex;align-items:center;gap:10px;border:1.5px solid #d9d9d9;border-radius:8px;padding:12px 14px;cursor:pointer;font-weight:600;color:var(--heading);font-size:.95rem;line-height:1.3;transition:border-color .15s,background .15s}
+  .f-radio input{accent-color:var(--green);width:18px;height:18px;flex-shrink:0;margin:0;cursor:pointer}
+  .f-radio:has(input:checked){border-color:var(--green);background:rgba(112,59,131,.06)}
+  .f-radio:has(input:focus-visible){box-shadow:0 0 0 3px rgba(112,59,131,.18)}
+  .f-consent{line-height:1.55;margin:4px 0 16px}
+  .f-submit{width:100%;justify-content:center}
+  .f-submit[disabled]{opacity:.8;cursor:wait;transform:none}
+  .f-spin{display:none;width:18px;height:18px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:fspin .7s linear infinite}
+  .f-submit[aria-busy="true"] .f-spin{display:inline-block}
+  @keyframes fspin{to{transform:rotate(360deg)}}
+  .f-alert{display:none;background:#fdecea;border:1px solid #f5c2bd;color:#8e2a1f;border-radius:8px;padding:12px 14px;font-size:.88rem;line-height:1.5;margin-bottom:14px}
+  .f-alert.show{display:block}
+  .f-hp{position:absolute!important;left:-10000px!important;top:auto;width:1px;height:1px;overflow:hidden}
+  .mobile-schnupper-text{display:none}
+  @media(max-width:760px){
+    .mobile-schnupper-text{display:block;order:5;font-size:20px;font-weight:800;color:#703b83;text-align:center;line-height:1.35;margin:24px 0 14px}
+    .hero-form{order:6;margin-bottom:30px}
+  }
+  .hero-top-text .urgency{gap:8px;font-size:24px;font-weight:400;line-height:1.25;padding:14px 24px;border-radius:9999px;color:#8a5a14;background:linear-gradient(180deg,#fffbea 0%,#fff1c4 100%);border:1px solid #f6dc8c;box-shadow:0 4px 14px rgba(138,90,20,.12);margin-bottom:20px}
+  .hero-top-text .urgency strong{font-weight:700;white-space:nowrap}
+  .hero h1{font-size:40px;font-weight:700;line-height:50px;color:#222}
+  .hero-top-text .lead{margin:16px 0 0}
+  .hero-img img{border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+  .form-card{background:#fff;border:0;padding:24px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+  .f-field{margin-bottom:16px}
+  .f-label{font-size:14px;font-weight:600;color:#222}
+  .f-input{height:44px;font-size:16px;border:1px solid #404040;border-radius:8px;padding:10px 12px}
+  select.f-input{padding-right:40px;background-position:right 12px center}
+  .f-consent{font-size:14px;color:#404040}
+  .f-consent a{color:#703b83;text-decoration:underline}
+  .f-submit.btn{width:100%;font-size:16px;font-weight:700;letter-spacing:.32px;text-transform:uppercase;background:rgb(112,59,131);color:#fff;padding:16px 12px;border-radius:8px;box-shadow:0 8px 20px rgba(112,59,131,.4)}
+  .fc-plaetze{text-align:center;font-weight:700;color:#e53e3e;font-size:14.4px;margin:14px 0 0}
+  .fc-note{text-align:center;color:#777;font-size:14.4px;line-height:1.5;margin:8px 0 0}
+  .fc-foot{text-align:center;color:#222;font-size:14px;line-height:1.5;margin:10px 0 0}
+  @media(max-width:760px){
+    .hero-top-text .urgency{display:flex!important;flex-wrap:wrap;justify-content:center;text-align:center;width:fit-content;max-width:100%;margin:6px auto 16px!important;font-size:24px!important;padding:14px 24px!important;white-space:normal!important}
+    .hero h1{font-size:40px;line-height:50px}
+    .hero-img img{border-radius:16px!important;box-shadow:0 10px 30px rgba(0,0,0,.08)!important}
+    .form-card{padding:24px}
+  }
+  @media(min-width:861px){
+    .hero-grid{align-items:stretch}
+    .hero-form{align-self:stretch;position:static;display:flex;margin-bottom:24px}
+    .form-card{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:32px}
+    #lead-form{display:flex;flex-direction:column;justify-content:space-between;flex:1}
+    .f-field{margin-bottom:22px}
+    .f-label{font-size:15px}
+    .f-input{height:52px;font-size:17px}
+    .f-radio{font-size:17px}
+    .f-consent{font-size:15px}
+    .f-submit.btn{padding:20px 12px;font-size:18px}
+    .fc-plaetze,.fc-note,.fc-foot{font-size:15px}
+  }
+  @media(max-width:640px){
+    .hero-top-text .urgency{display:inline-flex!important;flex-wrap:nowrap!important;align-items:center;justify-content:center;gap:5px;width:fit-content;max-width:100%;margin:6px auto 14px!important;font-size:15px!important;line-height:1.3;padding:8px 14px!important;white-space:nowrap!important;box-shadow:0 2px 8px rgba(138,90,20,.1)!important}
+    .hero-top-text{display:flex;flex-direction:column}
+    .hero h1{font-size:30px!important;line-height:1.2!important;margin:0}
+    .hero-top-text .lead{font-size:16px!important;line-height:1.5!important;margin:12px 0 0!important}
+    .mobile-schnupper-text{margin:16px 0 12px}
+    .form-card{padding:18px!important}
+    .f-field{margin-bottom:14px}
+    .f-label{font-size:14px}
+    .f-input{height:44px;font-size:16px}
+    .f-radio{font-size:16px}
+    .f-consent{font-size:14px}
+    .f-submit.btn{padding:16px 12px;font-size:16px}
+    .fc-plaetze,.fc-note,.fc-foot{font-size:14px}
+  }
 </style>
 </head>
 <body>
@@ -189,40 +272,64 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-top-text">
-      <div class="hero-badge-row">
-        <div style="display:inline-block;background:#703b83;color:#fff;font-weight:800;font-size:.75rem;padding:6px 14px;border-radius:50px;letter-spacing:.08em;text-transform:uppercase">Zum Schnuppertag am 14.11.2026</div>
-        <div class="hero-standort-tag">📍 Unterhaching</div>
-      </div>
-      <div class="urgency" style="font-size:1.05rem">🔥 Schnuppertag <strong>Samstag, 14.11.2026</strong></div>
+      <div class="urgency">🔥 Schnuppertag <strong>Samstag, 14.11.2026</strong></div>
       <h1>Kinder Kampfsport München <span>3,5–5 Jahre</span><br>Das Power Dragons Programm</h1>
       <p class="lead">Mehr als nur ein reines Kampfsportprogramm: Wir vermitteln Ihrem Kindergartenkind eine „Ja, ich schaffe das"-Einstellung – mit mehr Selbstbewusstsein, Konzentration und Lebenskompetenz – erleben Sie es beim Schnuppertag am 14.11.2026.</p>
-      <p class="lead-mobile">Mehr Selbstbewusstsein · Mehr Konzentration · Mehr Bewegung</p>
     </div>
-    <!-- Mobile CTA unter Bild (nur mobil) -->
-    <div class="mobile-hero-cta">
-      <p class="mobile-lead-full">Mehr als nur ein reines Kampfsportprogramm: Wir vermitteln Ihrem Kindergartenkind eine „Ja, ich schaffe das“-Einstellung – mit mehr Selbstbewusstsein, Konzentration und Lebenskompetenz – erleben Sie es beim Schnuppertag am 14.11.2026.</p>
-      <div class="btn-row">
-        <a href="#zum-formular" class="btn big">Gratis Schnuppertag sichern →</a>
-      </div>
-      <p style="margin-top:8px;font-size:.9rem;font-weight:700;color:#e53e3e;text-align:center">🔴 Noch <span id="plaetze-cta-m"></span> freie Plätze</p>
-    </div>
-    <div class="hero-bottom">
-      <ul>
-        <li>Stärkung von Selbstbewusstsein &amp; Selbstvertrauen</li>
-        <li>Grenzen aufzeigen und Nein sagen lernen</li>
-        <li>Wertevermittlung: Respekt, Disziplin, Mut</li>
-      </ul>
-      <div class="btn-row">
-        <a href="#zum-formular" class="btn big">Gratis Schnuppertag sichern →</a>
-      </div>
-      <p class="plaetze-line" style="margin-top:8px;font-size:.9rem;font-weight:700;color:#e53e3e">🔴 Noch <span id="plaetze-cta"></span> freie Plätze</p>
-      <p class="hero-note" style="margin-top:14px;font-size:.9rem;color:#777">✅ Aktuell <strong>kostenlos</strong> · ⏱ Anfrage in 60 Sekunden · 📍 Grünwalder Weg 20c, Unterhaching</p>
-    </div>
-    <div class="mobile-badges-row"><span class="mobile-badge-item">⭐ 99% Weiterempfehlung</span><span class="mobile-badge-item">🏆 30+ Jahre</span><span class="mobile-badge-item">📍 Unterhaching</span></div>
     <div class="hero-img">
       <img src="header.jpg" alt="Kindergartenkinder beim Power Dragons Karate-Training in Unterhaching" width="640" height="480" loading="eager" fetchpriority="high" decoding="sync">
-      <div class="badge-float loc"><span class="dot"></span>Unterhaching</div>
-      <div class="badge-float"><span class="dot"></span>Zum Schnuppertag am 14.11.2026</div>
+    </div>
+    <div class="mobile-badges-row"><span class="mobile-badge-item">⭐ 99% Weiterempfehlung</span><span class="mobile-badge-item">🏆 30+ Jahre</span><span class="mobile-badge-item">📍 Unterhaching</span></div>
+    <p class="mobile-schnupper-text">Schnuppertag am Samstag, 14.11.2026 in Unterhaching</p>
+    <div class="hero-form" id="zum-formular">
+      <div class="form-card">
+        <form id="lead-form" novalidate>
+          <div class="f-alert" id="f-alert" role="alert" aria-live="assertive"></div>
+          <div class="f-field" data-field="kurs">
+            <label class="f-label" for="f-kurs">Kurs auswählen *</label>
+            <select id="f-kurs" name="kurs" class="f-input" required aria-describedby="f-kurs-err">
+              <option value="" selected disabled>Bitte wählen ...</option>
+              <option value="Kinder 6 - 10 Jahre">Kinder 6 - 10 Jahre</option>
+              <option value="Kindergartenkinder 3,5 - 5 Jahre">Kindergartenkinder 3,5 - 5 Jahre</option>
+            </select>
+            <p class="f-error" id="f-kurs-err">Bitte wähle einen Kurs aus.</p>
+          </div>
+          <fieldset class="f-field" data-field="termin" id="f-termin-field" aria-describedby="f-termin-err" hidden>
+            <legend class="f-label">Termin *</legend>
+            <div class="f-radios" id="f-termine"></div>
+            <p class="f-error" id="f-termin-err">Bitte wähle einen Termin aus.</p>
+          </fieldset>
+          <div class="f-field" data-field="name_elternteil">
+            <label class="f-label" for="f-name">Dein Name *</label>
+            <input type="text" id="f-name" name="name_elternteil" class="f-input" placeholder="Vor- und Nachname" autocomplete="name" maxlength="120" required aria-describedby="f-name-err">
+            <p class="f-error" id="f-name-err">Bitte gib deinen Vor- und Nachnamen ein.</p>
+          </div>
+          <div class="f-field" data-field="name_kind">
+            <label class="f-label" for="f-kind">Nachname / Vorname deines Kindes *</label>
+            <input type="text" id="f-kind" name="name_kind" class="f-input" placeholder="Nachname / Vorname" autocomplete="off" maxlength="120" required aria-describedby="f-kind-err">
+            <p class="f-error" id="f-kind-err">Bitte gib den Namen deines Kindes ein.</p>
+          </div>
+          <div class="f-field" data-field="telefon">
+            <label class="f-label" for="f-tel">Handynummer *</label>
+            <input type="tel" id="f-tel" name="telefon" class="f-input" placeholder="0176 ..." autocomplete="tel" inputmode="tel" maxlength="30" required aria-describedby="f-tel-err">
+            <p class="f-error" id="f-tel-err">Bitte gib eine gültige Handynummer ein.</p>
+          </div>
+          <div class="f-field" data-field="email">
+            <label class="f-label" for="f-email">E-Mail *</label>
+            <input type="email" id="f-email" name="email" class="f-input" placeholder="deine@email.de" autocomplete="email" maxlength="160" required aria-describedby="f-email-err">
+            <p class="f-error" id="f-email-err">Bitte gib eine gültige E-Mail-Adresse ein.</p>
+          </div>
+          <div class="f-hp" aria-hidden="true">
+            <label for="f-website">Website</label>
+            <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="f-consent">Mit dem Absenden erklärst du dich damit einverstanden, dass wir dich kontaktieren. Mehr dazu in unserer <a href="https://www.kinder-kampfsport-schinhammer.de/datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>
+          <button type="submit" class="btn big f-submit" id="f-submit" aria-busy="false"><span class="f-spin" aria-hidden="true"></span><span class="f-btn-label">Gratis Schnuppertag sichern</span></button>
+        </form>
+        <p id="plaetze-cta" class="fc-plaetze"></p>
+        <p class="fc-note">✅ Aktuell kostenlos · ⏱ Anfrage in 60 Sekunden · 📍 Grünwalder Weg 20c, Unterhaching</p>
+        <p class="fc-foot">Kostenlos · Unverbindlich · Wir melden uns innerhalb von 24h.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -429,12 +536,9 @@
         <span class="free" id="plaetze-tigers-slot">freie Plätze</span>
       </div>
     </div>
-    <div style="max-width:760px;margin:0 auto" class="reveal">
-      <h3 id="zum-formular" style="color:#fff;text-align:center;font-size:1.4rem;margin-bottom:14px;font-weight:800;letter-spacing:.01em">🎯 Jetzt Platz sichern</h3>
-      <div class="form-box">
-        <iframe src="https://ext.matool.de/ptformdyn/?hash=1bd8052bb9a22fbd" id="probeForm" title="Voranmeldung Probetraining Power Dragons" scrolling="no" frameborder="0" style="width:100%;border:0;border-radius:10px;display:block;"></iframe>
-      </div>
-      <p style="color:#888;font-size:.8rem;text-align:center;margin-top:8px"><a href="https://www.matool.de" target="_blank" rel="noopener" style="color:#777">made by MATOOL</a></p>
+    <div style="max-width:760px;margin:0 auto" class="reveal center">
+      <h3 style="color:#fff;text-align:center;font-size:1.4rem;margin-bottom:14px;font-weight:800;letter-spacing:.01em">🎯 Jetzt Platz sichern</h3>
+      <div class="btn-row center"><a href="#zum-formular" class="btn big">Jetzt Platz sichern →</a></div>
     </div>
     <div class="center reveal" style="max-width:680px;margin:34px auto 0">
       <p style="color:#ddd">Der beste Einstieg für Ihr Kind ist an einem Schnuppertag. Dort kann Ihr Kind an einem Probeunterricht teilnehmen und wir stellen die Programme für die Eltern vor. Am Schnuppertag gibt es auch spezielle Einstiegsangebote.</p>
@@ -513,7 +617,7 @@
   </div>
 </footer>
 
-<div class="mobile-cta"><a href="#zum-formular" class="btn">Jetzt Platz sichern →</a></div>
+<div class="mobile-cta show"><a href="#zum-formular" class="btn">Jetzt Platz sichern →</a></div>
 
 <script>
   var PLAETZE_DRAGONS = 13;
@@ -521,12 +625,10 @@
   (function(){
     var dSlot = document.getElementById('plaetze-dragons-slot');
     var tSlot = document.getElementById('plaetze-tigers-slot');
-    var dCta  = document.getElementById('plaetze-cta');
+    var pCta  = document.getElementById('plaetze-cta');
     if(dSlot) dSlot.textContent = 'Noch ' + PLAETZE_DRAGONS + ' freie Plätze';
     if(tSlot) tSlot.textContent = 'Noch ' + PLAETZE_TIGERS + ' freie Plätze';
-    if(dCta)  dCta.textContent  = PLAETZE_DRAGONS;
-    var dCtaM = document.getElementById('plaetze-cta-m');
-    if(dCtaM) dCtaM.textContent = PLAETZE_DRAGONS;
+    if(pCta)  pCta.textContent  = '🔴 Noch ' + PLAETZE_DRAGONS + ' freie Plätze';
     if(dSlot && PLAETZE_DRAGONS <= 3) dSlot.classList.add('few');
     if(tSlot && PLAETZE_TIGERS <= 3) tSlot.classList.add('few');
   })();
@@ -545,8 +647,212 @@
       document.querySelectorAll('.reveal, .stagger').forEach(function(el){ revObs.observe(el); });
     }
   });
-  var bar=document.querySelector('.mobile-cta');if(bar){var anm=document.getElementById('anmeldung');var onScroll=function(){var show=window.scrollY>480;if(anm){var r=anm.getBoundingClientRect();if(r.top<window.innerHeight)show=false;}bar.classList.toggle('show',show);};window.addEventListener('scroll',onScroll,{passive:true});onScroll();}
-  (function(){var n=25;var h=10;var k=0;var d=document.getElementById('probeForm');if(!d)return;var f;var b=window.addEventListener?'addEventListener':'attachEvent';var c=window[b];var o=b=='attachEvent'?'onmessage':'message';c(o,function(e){if(e.data===parseInt(e.data)){if(e.data==99999999){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:"formular_abgesendet"});if(typeof fbq!=="undefined"){fbq("track","Lead");}console.log("MA Tool GoTr(): formular_abgesendet → dataLayer");var g=function(m,l){var s=document.scrollingElement||document.documentElement,q=s.scrollTop,p=m-q,r=+new Date(),a=function(v,u,x,w){v/=w/2;if(v<1){return x/2*v*v+u}v--;return -x/2*(v*(v-2)-1)+u},i=function(){var v=+new Date();var t=v-r;s.scrollTop=parseInt(a(t,q,p,l));if(t<l){requestAnimationFrame(i)}else{s.scrollTop=m}};i()};g(d.getBoundingClientRect().top+document.documentElement.scrollTop-(Math.max(document.documentElement.clientHeight,window.innerHeight||0)/2),500)}else{f=e.data}}},false);var j=window.setInterval(function(){var a=d.offsetHeight;k=Math.round((f-a)/h);k=Math.abs(k);if(k<1){k=0}if(f>0&&f!=a){if((f-a)>0){d.height=(a+k)+'px'}else{d.height=(a-k)+'px'}}},n)})();
+  (function(){
+    var formAnchor = document.getElementById('zum-formular');
+    if(!formAnchor) return;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('a[href="#zum-formular"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        formAnchor.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block: 'start'});
+      });
+    });
+
+    var bar = document.querySelector('.mobile-cta');
+    if(bar && 'IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ bar.classList.toggle('show', !e.isIntersecting); });
+      }, {threshold: 0.15}).observe(formAnchor);
+    }
+
+    var WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/26380316/413ji8f/';
+    var THANK_YOU_URL = '/danke';
+    var TRACKING_KEYS = ['utm_source','utm_medium','utm_content','utm_campaign','utm_term','utm_id','ad_id','adset_id','placement','site_source_name'];
+    var STORAGE_PREFIX = 'pd_unterhaching_trk_';
+    var TERMINE = {
+      'Kindergartenkinder 3,5 - 5 Jahre': ['14.11.26 - 14:30 - Samstag (frei)'],
+      'Kinder 6 - 10 Jahre': ['14.11.26 - 16:15 - Samstag (frei)']
+    };
+
+    var urlParams = new URLSearchParams(window.location.search);
+    TRACKING_KEYS.forEach(function(key){
+      var value = urlParams.get(key);
+      if(value){ try{ sessionStorage.setItem(STORAGE_PREFIX + key, value); }catch(err){} }
+    });
+    var getTracking = function(){
+      var data = {};
+      TRACKING_KEYS.forEach(function(key){
+        var value = urlParams.get(key);
+        if(!value){ try{ value = sessionStorage.getItem(STORAGE_PREFIX + key); }catch(err){ value = ''; } }
+        data[key] = value || '';
+      });
+      return data;
+    };
+
+    var berlinNow = function(){
+      var now = new Date();
+      now.setMilliseconds(0);
+      var parts = {};
+      new Intl.DateTimeFormat('de-DE', {timeZone:'Europe/Berlin', year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', second:'2-digit', hourCycle:'h23'})
+        .formatToParts(now).forEach(function(p){ parts[p.type] = p.value; });
+      var wallAsUtc = Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour, +parts.minute, +parts.second);
+      var offsetMin = Math.round((wallAsUtc - now.getTime()) / 60000);
+      var sign = offsetMin >= 0 ? '+' : '-';
+      var abs = Math.abs(offsetMin);
+      var offset = sign + String(Math.floor(abs / 60)).padStart(2,'0') + ':' + String(abs % 60).padStart(2,'0');
+      var time = parts.hour + ':' + parts.minute + ':' + parts.second;
+      return {
+        datum: parts.day + '.' + parts.month + '.' + parts.year,
+        uhrzeit: time,
+        zeitstempel: parts.year + '-' + parts.month + '-' + parts.day + 'T' + time + offset
+      };
+    };
+
+    var form = document.getElementById('lead-form');
+    var kurs = document.getElementById('f-kurs');
+    var termine = document.getElementById('f-termine');
+    var terminField = document.getElementById('f-termin-field');
+    var nameEl = document.getElementById('f-name');
+    var kindEl = document.getElementById('f-kind');
+    var telEl = document.getElementById('f-tel');
+    var emailEl = document.getElementById('f-email');
+    var honeypot = document.getElementById('f-website');
+    var submitBtn = document.getElementById('f-submit');
+    var btnLabel = submitBtn.querySelector('.f-btn-label');
+    var alertBox = document.getElementById('f-alert');
+    var submitting = false;
+
+    var fieldWrap = function(name){ return form.querySelector('[data-field="' + name + '"]'); };
+    var setInvalid = function(name, invalid){
+      var wrap = fieldWrap(name);
+      wrap.classList.toggle('invalid', invalid);
+      var input = wrap.querySelector('input:not([type="radio"]), select');
+      if(input) input.setAttribute('aria-invalid', invalid ? 'true' : 'false');
+    };
+    var selectedTermin = function(){
+      var checked = form.querySelector('input[name="termin"]:checked');
+      return checked ? checked.value : '';
+    };
+
+    var renderTermine = function(){
+      termine.textContent = '';
+      var list = TERMINE[kurs.value];
+      terminField.hidden = !list;
+      if(!list) return;
+      list.forEach(function(t, i){
+        var label = document.createElement('label');
+        label.className = 'f-radio';
+        var input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'termin';
+        input.value = t;
+        input.required = true;
+        input.id = 'f-termin-' + i;
+        input.addEventListener('change', function(){ setInvalid('termin', false); });
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(t));
+        termine.appendChild(label);
+      });
+    };
+    kurs.addEventListener('change', function(){ setInvalid('kurs', false); renderTermine(); });
+
+    var validators = {
+      kurs: function(){ return !!TERMINE[kurs.value]; },
+      termin: function(){ return selectedTermin() !== ''; },
+      name_elternteil: function(){ return nameEl.value.trim().length >= 2; },
+      name_kind: function(){ return kindEl.value.trim().length >= 2; },
+      telefon: function(){ var v = telEl.value.trim(); return /^[+0-9 ()\/.-]+$/.test(v) && v.replace(/\D/g,'').length >= 6; },
+      email: function(){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailEl.value.trim()); }
+    };
+    var inputsByField = {name_elternteil: nameEl, name_kind: kindEl, telefon: telEl, email: emailEl};
+    Object.keys(inputsByField).forEach(function(name){
+      inputsByField[name].addEventListener('input', function(){
+        if(fieldWrap(name).classList.contains('invalid') && validators[name]()) setInvalid(name, false);
+      });
+    });
+
+    var validate = function(){
+      var firstInvalid = null;
+      Object.keys(validators).forEach(function(name){
+        var ok = validators[name]();
+        setInvalid(name, !ok);
+        if(!ok && !firstInvalid) firstInvalid = name;
+      });
+      if(firstInvalid){
+        var target = firstInvalid === 'kurs' ? kurs : firstInvalid === 'termin' ? (form.querySelector('input[name="termin"]') || kurs) : inputsByField[firstInvalid];
+        target.focus();
+        return false;
+      }
+      return true;
+    };
+
+    var setLoading = function(loading){
+      submitBtn.disabled = loading;
+      submitBtn.setAttribute('aria-busy', loading ? 'true' : 'false');
+      btnLabel.textContent = loading ? 'WIRD GESENDET …' : 'Gratis Schnuppertag sichern';
+    };
+    var showAlert = function(msg){ alertBox.textContent = msg; alertBox.classList.add('show'); };
+    var hideAlert = function(){ alertBox.textContent = ''; alertBox.classList.remove('show'); };
+
+    var buildRedirectUrl = function(tracking){
+      var qs = new URLSearchParams();
+      TRACKING_KEYS.forEach(function(key){ if(tracking[key]) qs.set(key, tracking[key]); });
+      var query = qs.toString();
+      return THANK_YOU_URL + (query ? '?' + query : '');
+    };
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(submitting) return;
+      hideAlert();
+      if(!validate()) return;
+
+      var tracking = getTracking();
+      if(honeypot.value){ window.location.href = buildRedirectUrl(tracking); return; }
+
+      submitting = true;
+      setLoading(true);
+
+      var time = berlinNow();
+      var payload = new URLSearchParams();
+      payload.set('kurs', kurs.value);
+      payload.set('termin', selectedTermin());
+      payload.set('name_elternteil', nameEl.value.trim());
+      payload.set('name_kind', kindEl.value.trim());
+      payload.set('telefon', telEl.value.trim());
+      payload.set('email', emailEl.value.trim());
+      payload.set('einwilligung', 'ja');
+      payload.set('datum', time.datum);
+      payload.set('uhrzeit', time.uhrzeit);
+      payload.set('zeitstempel', time.zeitstempel);
+      payload.set('seite', 'Power Dragons Unterhaching');
+      payload.set('seiten_url', window.location.href);
+      TRACKING_KEYS.forEach(function(key){ payload.set(key, tracking[key]); });
+
+      var request = fetch(WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        keepalive: true,
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: payload.toString()
+      });
+      var timeout = new Promise(function(resolve){ setTimeout(resolve, 3000); });
+
+      Promise.race([request, timeout]).then(function(){
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({event: 'formular_abgesendet'});
+        if(typeof fbq !== 'undefined') fbq('track', 'Lead');
+        window.location.href = buildRedirectUrl(tracking);
+      }).catch(function(){
+        submitting = false;
+        setLoading(false);
+        showAlert('Leider konnte deine Anfrage gerade nicht gesendet werden. Bitte prüfe deine Internetverbindung und versuche es noch einmal.');
+      });
+    });
+
+    window.addEventListener('pageshow', function(e){ if(e.persisted){ submitting = false; setLoading(false); } });
+  })();
   var scroll = document.querySelector('.reviews-scroll');
   if(scroll){ var isDown=false,startX,scrollLeft; scroll.addEventListener('mousedown',function(e){ isDown=true; startX=e.pageX-scroll.offsetLeft; scrollLeft=scroll.scrollLeft; }); scroll.addEventListener('mouseleave',function(){ isDown=false; }); scroll.addEventListener('mouseup',function(){ isDown=false; }); scroll.addEventListener('mousemove',function(e){ if(!isDown) return; e.preventDefault(); var x=e.pageX-scroll.offsetLeft; scroll.scrollLeft=scrollLeft-(x-startX); }); }
 </script>
